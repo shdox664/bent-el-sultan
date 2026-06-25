@@ -1,0 +1,1768 @@
+html
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بنت السلطان — للحلويات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C5A059;
+      --gold-light: #F5E6C8;
+      --gold-dark: #8B6914;
+      --gold-muted: rgba(197, 160, 89, 0.15);
+      --bg-main: #FFFFFF;
+      --bg-alt: #FAF8F5;
+      --text-dark: #0F0F0F;
+      --text-main: #2D2D2D;
+      --text-muted: #6B5B4A;
+      --border-color: rgba(197, 160, 89, 0.2);
+      --whatsapp: #25D366;
+      --whatsapp-dark: #1DA851;
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+      --shadow-gold: 0 8px 30px rgba(197, 160, 89, 0.15);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-alt); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+    /* LOADER */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-ring {
+      width: 60px;
+      height: 60px;
+      border: 2px solid var(--gold-muted);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loader-text {
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      letter-spacing: 0.15em;
+      color: var(--gold-dark);
+      margin-top: 24px;
+      opacity: 0;
+      animation: fadeInText 0.8s ease 0.4s forwards;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes fadeInText { to { opacity: 1; } }
+
+    /* PARTICLES */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.85) 60%, transparent 100%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 14px 60px;
+      box-shadow: var(--shadow-soft);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-logo {
+      font-family: 'Amiri', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-logo::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+
+    .nav-logo:hover::after { width: 100%; }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold-dark); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      border: 1.5px solid var(--gold);
+      padding: 10px 28px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gold);
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .nav-cta:hover { color: #fff; border-color: var(--gold); }
+    .nav-cta:hover::before { right: 0; }
+
+    /* MOBILE MENU TOGGLE */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold-dark);
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* HERO */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.7) 100%),
+        url("Screenshot 2026-06-21 154605.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 50%;
+      animation: heroZoom 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.0); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to bottom, rgba(15,15,15,0.5), rgba(15,15,15,0.2), rgba(15,15,15,0.55));
+    }
+
+    .hero-ornament {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-ornament svg {
+      opacity: 0.12;
+      width: min(700px, 90vw);
+      animation: ornamentRotate 60s linear infinite;
+    }
+
+    @keyframes ornamentRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      padding: 0 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroReveal 1.2s ease 1.5s forwards;
+    }
+
+    @keyframes heroReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-eyebrow span {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .hero-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(48px, 8vw, 110px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+      display: block;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    }
+
+    .hero-subtitle {
+      font-family: 'Amiri', serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 48px;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+      padding: 16px 44px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(197,160,89,0.3);
+      border: none;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(197,160,89,0.4);
+    }
+
+    .btn-primary:hover::after { width: 300px; height: 300px; }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff;
+      padding: 15px 44px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.8);
+      transform: translateY(-3px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeInText 1s ease 2.8s forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* DIVIDER */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 60px 0 20px;
+    }
+
+    .divider-line {
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    }
+
+    .divider-gem {
+      color: var(--gold);
+      font-size: 14px;
+      animation: gemPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes gemPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 2; }
+
+    /* ABOUT */
+    #about {
+      padding: 140px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.9;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .about-frame:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .about-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .about-frame:hover img { transform: scale(1.05); }
+
+    .about-frame::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--border-color);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .about-frame::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+      z-index: 1;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      width: 120px;
+      height: 120px;
+      background: var(--gold-dark);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      z-index: 3;
+      box-shadow: 0 10px 30px rgba(139,105,20,0.3);
+      animation: badgeFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .about-badge .num {
+      font-family: 'Amiri', serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .about-badge .lbl { font-size: 11px; margin-top: 3px; font-weight: 700; }
+
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1.5px;
+      background: var(--gold);
+      opacity: 0.8;
+    }
+
+    .about-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 28px;
+    }
+
+    .about-title em { font-style: italic; color: var(--gold-dark); }
+
+    .about-text {
+      font-size: 17px;
+      line-height: 2;
+      color: var(--text-main);
+      margin-bottom: 20px;
+    }
+
+    .about-text strong { color: var(--gold-dark); font-weight: 700; }
+
+    /* SPECIALTIES */
+    #specialties {
+      padding: 120px 60px;
+      background: linear-gradient(to bottom, var(--bg-main), var(--bg-alt), var(--bg-main));
+    }
+
+    .specialties-header { text-align: center; margin-bottom: 80px; }
+
+    .section-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-dark);
+    }
+
+    .section-title em { font-style: italic; color: var(--gold-dark); }
+
+    .specialties-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .specialty-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--bg-main);
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+      transition: box-shadow 0.5s ease, transform 0.5s ease;
+    }
+
+    .specialty-card:hover {
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-5px);
+    }
+
+    /* البطاقة الأولى تمتد على صفين */
+    .specialty-card:first-child {
+      grid-row: span 2;
+      aspect-ratio: unset;
+    }
+
+    .specialty-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.75) 35%, transparent 100%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+
+    .specialty-card:hover .specialty-inner {
+      background: linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.5) 100%);
+    }
+
+    .specialty-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    .specialty-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .specialty-card:hover .specialty-bg { transform: scale(1.08); }
+
+    .specialty-tag {
+      font-size: 12px;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .specialty-name {
+      font-family: 'Amiri', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .specialty-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-main);
+      transform: translateY(12px);
+      opacity: 0;
+      transition: all 0.5s ease 0.1s;
+    }
+
+    .specialty-card:hover .specialty-desc {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .specialty-inner {
+  background:
+    linear-gradient(
+      to top,
+      rgba(255,255,255,0.75) 0%,
+      rgba(255,255,255,0.25) 35%,
+      transparent 100%
+    );
+}
+
+    .specialty-card:hover .specialty-line { transform: scaleX(1); }
+
+    /* EXPERIENCE */
+    #experience {
+      padding: 140px 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .experience-quote {
+      font-family: 'Amiri', serif;
+      font-size: clamp(26px, 4vw, 46px);
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .experience-quote::before {
+      content: '❝';
+      font-size: 100px;
+      color: var(--gold-light);
+      position: absolute;
+      top: -40px;
+      right: -10px;
+      font-family: serif;
+      line-height: 1;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .experience-attr {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.05em;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      padding: 80px 0 50px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; position: relative; }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 60px;
+      background: var(--border-color);
+    }
+
+    .stat-num {
+      font-family: 'Amiri', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-num sup { font-size: 24px; vertical-align: super; }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ORDER CTA SECTION */
+    #order-cta {
+      padding: 120px 60px;
+      background: var(--text-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #order-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(197,160,89,0.12) 0%, transparent 70%);
+    }
+
+    #order-cta::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(197,160,89,0.02) 10px, rgba(197,160,89,0.02) 20px);
+      animation: shimmer 10s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .order-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .order-cta-gem {
+      color: var(--gold);
+      font-size: 32px;
+      margin-bottom: 30px;
+      display: block;
+      animation: gemPulse 3s ease-in-out infinite;
+    }
+
+    .order-cta-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(34px, 5vw, 60px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .order-cta-title em { font-style: italic; color: var(--gold-light); }
+
+    .order-cta-text {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      margin-bottom: 44px;
+    }
+
+    .btn-cta-gold {
+      background: var(--gold);
+      color: #fff;
+      padding: 18px 56px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(197,160,89,0.3);
+      font-family: 'Cairo', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-cta-gold::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gold-dark);
+      transition: right 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-cta-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(197,160,89,0.4);
+    }
+
+    .btn-cta-gold:hover::before { right: 0; }
+
+    /* LOCATION */
+    #location {
+      padding: 120px 60px;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .location-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .location-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 36px;
+      line-height: 1.15;
+    }
+
+    .location-title em { font-style: italic; color: var(--gold-dark); }
+
+    .info-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border-color);
+      transition: transform 0.3s ease;
+    }
+
+    .info-row:hover { transform: translateX(-5px); }
+    .info-row:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-dark);
+      font-size: 18px;
+      background: #fff;
+      transition: all 0.4s ease;
+    }
+
+    .info-row:hover .info-icon {
+      background: var(--gold);
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    .info-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .info-value { font-size: 16px; color: var(--text-main); line-height: 1.7; }
+
+    .info-value a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .info-value a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold-dark);
+      transition: width 0.3s ease;
+    }
+
+    .info-value a:hover::after { width: 100%; }
+
+    .contact-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: #fff;
+      padding: 15px 32px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 20px rgba(37,211,102,0.2);
+      border: none;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--whatsapp-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(37,211,102,0.3);
+    }
+
+    .btn-whatsapp svg { width: 18px; height: 18px; }
+
+    .btn-instagram {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold-dark);
+      padding: 14px 32px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .btn-instagram:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-instagram svg { width: 18px; height: 18px; }
+
+    .map-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #F5E6C8 0%, #FFFFFF 50%, #FDF8F0 100%);
+      border: 1.5px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .map-placeholder:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--border-color);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .map-pin {
+      font-size: 52px;
+      position: relative;
+      z-index: 2;
+      animation: pinBounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(197,160,89,0.3));
+    }
+
+    @keyframes pinBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .map-city {
+      font-family: 'Amiri', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      position: relative;
+      z-index: 2;
+    }
+
+    .map-desc {
+      font-size: 16px;
+      color: var(--text-main);
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 60px;
+      background: var(--bg-main);
+      border-top: 1px solid var(--border-color);
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-family: 'Amiri', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+
+    .footer-tagline {
+      font-family: 'Amiri', serif;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      padding: 2px 0;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .footer-links a:hover { color: var(--gold-dark); }
+    .footer-links a:hover::after { width: 100%; }
+
+    .footer-social { display: flex; gap: 14px; }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-dark);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+    }
+
+    .footer-social a:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(197,160,89,0.25);
+    }
+
+    .footer-social svg { width: 18px; height: 18px; }
+
+    .footer-copy {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+
+      .menu-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 100px 40px 40px;
+        gap: 24px;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+        align-items: flex-start;
+      }
+
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 16px; }
+
+      #about {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 100px 24px;
+      }
+
+      .about-badge {
+        left: 0;
+        right: auto;
+        width: 100px;
+        height: 100px;
+      }
+
+      .about-badge .num { font-size: 24px; }
+
+      #specialties { padding: 100px 24px; }
+
+      .specialties-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .specialty-card:first-child {
+        grid-row: auto;
+        aspect-ratio: 3/4;
+      }
+
+      #experience { padding: 100px 24px; }
+
+      .stats-row { gap: 40px; }
+
+      .stat-item:not(:last-child)::after { display: none; }
+
+      #order-cta { padding: 100px 24px; }
+
+      #location { padding: 100px 24px; }
+
+      .location-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      footer {
+        padding: 40px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-copy { text-align: right; }
+    }
+
+    @media (max-width: 560px) {
+      .specialties-grid { grid-template-columns: 1fr; }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .btn-primary, .btn-ghost {
+        width: 100%;
+        text-align: center;
+      }
+
+      .stats-row {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-whatsapp, .btn-instagram {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">بنت السلطان</div>
+  </div>
+
+  <!-- PARTICLES -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">بنت السلطان</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">قصتنا</a></li>
+      <li><a href="#specialties">تخصصاتنا</a></li>
+      <li><a href="#experience">إبداعاتنا</a></li>
+      <li><a href="#location">موقعنا</a></li>
+    </ul>
+    <a href="bent2.html" class="nav-cta">🛒 اطلب الآن</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-ornament">
+      <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="300" cy="300" r="280" stroke="#C5A059" stroke-width="1"/>
+        <circle cx="300" cy="300" r="240" stroke="#C5A059" stroke-width="0.6"/>
+        <circle cx="300" cy="300" r="200" stroke="#C5A059" stroke-width="1"/>
+        <line x1="300" y1="20" x2="300" y2="580" stroke="#C5A059" stroke-width="0.4"/>
+        <line x1="20" y1="300" x2="580" y2="300" stroke="#C5A059" stroke-width="0.4"/>
+        <line x1="102" y1="102" x2="498" y2="498" stroke="#C5A059" stroke-width="0.25"/>
+        <line x1="498" y1="102" x2="102" y2="498" stroke="#C5A059" stroke-width="0.25"/>
+        <polygon points="300,40 560,460 40,460" stroke="#C5A059" stroke-width="0.6" fill="none"/>
+        <polygon points="300,560 560,140 40,140" stroke="#C5A059" stroke-width="0.6" fill="none"/>
+        <circle cx="300" cy="300" r="6" fill="#C5A059" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span></span>حلويات تقليدية<span></span></div>
+      <h1 class="hero-title">فن صناعة<br><em>الحلويات</em></h1>
+      <p class="hero-subtitle">حلويات تقليدية وعصرية · كعكات · مرطبات ومملحات</p>
+      <div class="hero-actions">
+        <a href="bent2.html" class="btn-primary">تصفح المنتجات</a>
+        <a href="#about" class="btn-ghost">اكتشفوا قصتنا</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-frame">
+        <img
+          src="ChatGPT Image Jun 24, 2026, 07_06_19 PM.png"
+          alt="كعكة أنيقة"
+          loading="lazy"
+          width="600"
+          height="800">
+      </div>
+      <div class="about-badge">
+        <div class="num">100<sup>%</sup></div>
+        <div class="lbl">جودة</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow reveal">قصتنا</div>
+      <h2 class="about-title reveal reveal-delay-1"><em>خبرة</em><br>استثنائية</h2>
+      <p class="about-text reveal reveal-delay-2">
+        مرحبا بكم في <strong>بنت السلطان</strong>، ملاذ الحلاوة حيث تلتقي الأصالة بالمعاصرة في كل إبداع لإرضاء أذواقكم.
+      </p>
+      <p class="about-text reveal reveal-delay-3">
+        نختار أفضل المكونات لنقدم لكم <strong>حلويات تقليدية</strong>، كعكات حسب الطلب ومرطبات تحول كل مناسبة إلى ذكرى ثمينة.
+      </p>
+      <div class="divider reveal" style="padding: 30px 0 0; justify-content: flex-start;">
+        <div class="divider-line"></div>
+        <div class="divider-gem">✦</div>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTIES -->
+  <section id="specialties">
+    <div class="specialties-header">
+      <div class="section-eyebrow reveal" style="justify-content: center;">إبداعاتنا</div>
+      <h2 class="section-title reveal reveal-delay-1"><em>تخصصاتنا</em></h2>
+    </div>
+
+    <div class="specialties-grid">
+
+      <!-- بطاقة 1: كعكات الزفاف — تمتد على صفين -->
+      <div class="specialty-card reveal">
+        <div class="specialty-bg">
+          <img
+            src="photo_5900253242220810084_y.jpg"
+            alt="كعكة زفاف ذهبية"
+            loading="lazy"
+            width="600"
+            height="800">
+        </div>
+        <div class="specialty-inner">
+          <div class="specialty-tag">علامتنا المميزة</div>
+          <div class="specialty-line"></div>
+          <div class="specialty-name">كعكات<br>الزفاف</div>
+          <div class="specialty-desc">تحف فنية متعددة الطبقات، مزينة بزهور السكر والزخارف الذهبية لتخليد يومكم الكبير.</div>
+        </div>
+      </div>
+
+      <!-- بطاقة 2: حلويات جزائرية -->
+      <div class="specialty-card reveal reveal-delay-1">
+        <div class="specialty-bg">
+          <img
+            src="photo_5900253242220810081_y.jpg"
+            alt="بقلاوة جزائرية"
+            loading="lazy"
+            width="600"
+            height="800">
+        </div>
+        <div class="specialty-inner">
+          <div class="specialty-tag">تقليدي</div>
+          <div class="specialty-line"></div>
+          <div class="specialty-name">حلويات جزائرية</div>
+          <div class="specialty-desc">مقروط، زلابية، بقلاوة وغيرها من الحلويات المحضرة وفقاً للوصفات العريقة.</div>
+        </div>
+      </div>
+
+      <!-- بطاقة 3: أعياد الميلاد -->
+      <div class="specialty-card reveal reveal-delay-2">
+        <div class="specialty-bg">
+          <img
+            src="photo_5900253242220810158_y.jpg"
+            alt="كعكة عيد ميلاد"
+            loading="lazy"
+            width="600"
+            height="800">
+        </div>
+        <div class="specialty-inner">
+          <div class="specialty-tag">أعياد ميلاد</div>
+          <div class="specialty-line"></div>
+          <div class="specialty-name">كعكات<br>المناسبات</div>
+          <div class="specialty-desc">كعكات مصممة خصيصاً لتزيين أجمل لحظاتكم بلمسات إبداعية لا تُنسى.</div>
+        </div>
+      </div>
+
+      <!-- بطاقة 4: متنوع -->
+      <div class="specialty-card reveal reveal-delay-3">
+        <div class="specialty-bg">
+          <img
+            src="photo_5900253242220810157_y.jpg"
+            alt="حلويات متنوعة"
+            loading="lazy"
+            width="600"
+            height="800">
+        </div>
+        <div class="specialty-inner">
+          <div class="specialty-tag">متنوع</div>
+          <div class="specialty-line"></div>
+          <div class="specialty-name">إبداعات<br>خاصة</div>
+          <div class="specialty-desc">تشكيلة واسعة من الحلويات العصرية والمرطبات والمملحات لكل ذوق وكل مناسبة.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <div class="divider-gem">✦</div>
+      <div class="divider-line"></div>
+    </div>
+    <p class="experience-quote reveal" style="margin: 50px 0 20px;">
+      « كل كعكة تروي قصة،<br>وكل قضمة هي رحلة في عالم المتعة »
+    </p>
+    <p class="experience-attr reveal reveal-delay-1">— روح بنت السلطان</p>
+
+    <div class="stats-row">
+      <div class="stat-item reveal">
+        <div class="stat-num">50<sup>+</sup></div>
+        <div class="stat-label">إبداعات فريدة</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">طلبات مخصصة</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">100<sup>%</sup></div>
+        <div class="stat-label">اتقان </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER CTA -->
+  <section id="order-cta">
+    <div class="order-cta-inner">
+      <span class="order-cta-gem">✦</span>
+      <h2 class="order-cta-title">جاهزون لتلبية<br><em>طلباتكم</em></h2>
+      <p class="order-cta-text">تصفحوا قائمتنا الكاملة من الحلويات التقليدية والعصرية والكعكات، وأرسلوا طلبكم مباشرة عبر انستغرام أو واتساب.</p>
+      <a href="bent2.html" class="btn-cta-gold">اطلب الآن ←</a>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="location-inner">
+      <div>
+        <div class="section-eyebrow reveal">أين تجدوننا</div>
+        <h2 class="location-title reveal reveal-delay-1">تفضلوا<br><em>بزيارتنا</em></h2>
+
+        <div class="info-row reveal reveal-delay-2">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">العنوان</div>
+            <div class="info-value">حي المعمورة، الأغواط<br>RV39+GCQ</div>
+          </div>
+        </div>
+        <div class="info-row reveal reveal-delay-3">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">الهاتف / واتساب</div>
+            <div class="info-value"><a href="tel:0600000000">0657633677</a></div>
+          </div>
+        </div>
+        <div class="info-row reveal">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-label">أوقات العمل</div>
+            <div class="info-value">كل يوم · 8:00 صباحاً – 9:00 مساءً<br>الطلبات الخاصة عن طريق الحجز</div>
+          </div>
+        </div>
+
+        <div class="contact-actions reveal">
+          <a href="https://wa.me/213657633677?text=السلام%20عليكم%2C%20أريد%20الاستعلام%20عن%20الطلبات"
+            target="_blank" rel="noopener" class="btn-whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.6 6.3A8.86 8.86 0 0 0 12 4a8.94 8.94 0 0 0-7.7 13.4L3 21l3.7-1.3A8.9 8.9 0 0 0 12 21a8.94 8.94 0 0 0 8.9-9 8.86 8.86 0 0 0-3.3-5.7zm-5.6 13.2a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.2.7.7-2.1-.2-.3A7.42 7.42 0 0 1 12 5.5a7.4 7.4 0 0 1 5.3 2.2A7.4 7.4 0 0 1 19.5 13a7.45 7.45 0 0 1-7.5 6.5zm4.1-5.6c-.2-.1-1.3-.7-1.6-.7-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-1.2-.5-2-1.6-2.2-1.9-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.4.1-.6-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.1 1.6 2.5 4 3.4 2 .8 2 .5 2.3.5.3 0 1-.4 1.2-.8.2-.4.2-.7.1-.8 0-.1-.2-.1-.4-.2z"/>
+            </svg>
+            تواصل عبر واتساب
+          </a>
+          <a href="https://www.instagram.com/bent.el_sultan/" target="_blank" rel="noopener" class="btn-instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            تابعونا على انستغرام
+          </a>
+        </div>
+      </div>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=RV39%2BGCQ+Maamoura+Laghouat"
+        target="_blank" rel="noopener"
+        class="map-placeholder reveal reveal-delay-1"
+        style="text-decoration:none;">
+        <div class="map-pin">📍</div>
+        <div class="map-city">بنت السلطان</div>
+        <div class="map-desc">
+          حي المعمورة، الأغواط<br><br>
+          <span style="color: var(--gold-dark); font-size: 13px; font-weight: 700;">افتح في الخرائط ←</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">بنت السلطان</div>
+      <div class="footer-tagline">فن صناعة الحلويات</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">قصتنا</a></li>
+      <li><a href="#specialties">تخصصاتنا</a></li>
+      <li><a href="bent2.html">القائمة</a></li>
+      <li><a href="#location">اتصل بنا</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://wa.me/213600000000" target="_blank" rel="noopener" aria-label="واتساب">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.6 6.3A8.86 8.86 0 0 0 12 4a8.94 8.94 0 0 0-7.7 13.4L3 21l3.7-1.3A8.9 8.9 0 0 0 12 21a8.94 8.94 0 0 0 8.9-9 8.86 8.86 0 0 0-3.3-5.7zm-5.6 13.2a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.2.7.7-2.1-.2-.3A7.42 7.42 0 0 1 12 5.5a7.4 7.4 0 0 1 5.3 2.2A7.4 7.4 0 0 1 19.5 13a7.45 7.45 0 0 1-7.5 6.5zm4.1-5.6c-.2-.1-1.3-.7-1.6-.7-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-1.2-.5-2-1.6-2.2-1.9-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.4.1-.6-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.1 1.6 2.5 4 3.4 2 .8 2 .5 2.3.5.3 0 1-.4 1.2-.8.2-.4.2-.7.1-.8 0-.1-.2-.1-.4-.2z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/bent.el_sultan/" target="_blank" rel="noopener" aria-label="انستغرام">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 بنت السلطان<br>الأغواط، الجزائر</div>
+  </footer>
+
+  <script>
+    // LOADER
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 800);
+    });
+
+    // NAV SCROLL
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // MOBILE MENU
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // REVEAL ANIMATIONS
+    function reveal() {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', reveal, { passive: true });
+    window.addEventListener('resize', reveal, { passive: true });
+    reveal();
+
+    // PARTICLES
+    (function () {
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let animationId;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const isMobile = window.matchMedia('(pointer: coarse)').matches;
+      const count = isMobile ? 15 : 40;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: Math.random() * 2 + 0.5,
+          dx: (Math.random() - 0.5) * 0.4,
+          dy: (Math.random() - 0.5) * 0.4,
+          o: Math.random() * 0.4 + 0.2,
+          pulse: Math.random() * Math.PI * 2
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.pulse += 0.02;
+          const currentR = p.r + Math.sin(p.pulse) * 0.3;
+          const currentO = p.o + Math.sin(p.pulse) * 0.1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, Math.max(0.2, currentR), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(197,160,89,${Math.max(0.1, currentO)})`;
+          ctx.fill();
+
+          p.x += p.dx;
+          p.y += p.dy;
+
+          if (p.x < -10) p.x = canvas.width + 10;
+          if (p.x > canvas.width + 10) p.x = -10;
+          if (p.y < -10) p.y = canvas.height + 10;
+          if (p.y > canvas.height + 10) p.y = -10;
+        });
+        animationId = requestAnimationFrame(animate);
+      }
+      animate();
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          cancelAnimationFrame(animationId);
+        } else {
+          animate();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
