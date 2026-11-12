@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Hijab Élégance | أناقة الحجاب</title>
+<meta name="description" content="متجر أناقة الحجاب — تشكيلة راقية من الحجابات والخمارات بصور أزياء محتشمة عالية الجودة.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -378,12 +379,18 @@ const SIZES=['S','M','L','XL'];
 
 /* ============ صور حقيقية مخصصة للمحجبات (Hijab & Khimar Fashion) ============ */
 
-const u=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-
+const u=(url)=>url;
 const IMG={
-  p1:u('1702974776993-1ce5ec6ab27b'), p2:u('1561442748-c50715dc32f6'), p3:u('1771646752558-5bbd73b784f6'), p4:u('1772714601002-fbb0fea8a911'),
-  p5:u('1673547991911-c8b25dde4b9b'), p6:u('1681134533637-683685cdfb43'), p7:u('1773188536669-17275a1c200c'), p8:u('1771032351710-2a4b39d3f5d9'),
-  h1:u('1702974776993-1ce5ec6ab27b',1000), h2:u('1561442748-c50715dc32f6',1000)
+  p1:u('https://images.unsplash.com/photo-1702974776993-1ce5ec6ab27b?auto=format&fit=crop&w=1000&q=85'),
+  p2:u('https://www.simplyzida.co.uk/cdn/shop/collections/womens-modest-fashion-abayas-hijabs-simply-zida_jpg.png?v=1769033316'),
+  p3:u('https://cdn.shopify.com/s/files/1/0599/0816/1654/files/t27p2.2.jpg?v=1762577319'),
+  p4:u('https://www.jola-hijab.com/images/hero.png'),
+  p5:u('https://www.abouther.com/sites/default/files/2019/06/11/dg_abaya_look1.jpg'),
+  p6:u('https://hanayen.com/cdn/shop/articles/7E7A6057_copy.jpg?v=1659093922&width=1200'),
+  p7:u('https://cdn.hijabista.com.my/2023/12/photo_6053342558299470674_y.jpg'),
+  p8:u('https://images.pexels.com/photos/37176256/pexels-photo-37176256/free-photo-of-elegant-portrait-of-woman-in-hijab-with-intricate-fashion.jpeg?auto=compress&cs=tinysrgb&w=1000'),
+  h1:u('https://images.unsplash.com/photo-1702974776993-1ce5ec6ab27b?auto=format&fit=crop&w=1100&q=85'),
+  h2:u('https://www.simplyzida.co.uk/cdn/shop/collections/womens-modest-fashion-abayas-hijabs-simply-zida_jpg.png?v=1769033316')
 };
 
 
