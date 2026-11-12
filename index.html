@@ -134,46 +134,46 @@ input:focus,select:focus{border-color:var(--rose);outline:none}
 .ok{padding:56px 26px;text-align:center;grid-column:1/-1}
 .ok b{display:grid;place-items:center;width:74px;height:74px;border-radius:50%;background:var(--sage);color:#fff;font-size:2.1rem;margin:0 auto 16px}
 @media(max-width:760px){
- .hero .box{grid-template-columns:1fr}.col{display:none}
- .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{aspect-ratio:4/5}.tile span{font-size:1.2rem;bottom:12px;inset-inline-start:14px}.tile small{display:none}
- .band .in{grid-template-columns:1fr}.band img{min-height:0;aspect-ratio:16/10}
- .ov{align-items:flex-end;padding:0}
- .modal{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-height:92vh}
- .modal .pic img{min-height:0;aspect-ratio:16/10}
- .grid{grid-template-columns:repeat(2,1fr);gap:12px}
- .card h3{font-size:.95rem}.row2{flex-direction:column;align-items:flex-start}
+ .hero .box{grid-template-columns:1fr}.col{display:none}
+ .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{aspect-ratio:4/5}.tile span{font-size:1.2rem;bottom:12px;inset-inline-start:14px}.tile small{display:none}
+ .band .in{grid-template-columns:1fr}.band img{min-height:0;aspect-ratio:16/10}
+ .ov{align-items:flex-end;padding:0}
+ .modal{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-height:92vh}
+ .modal .pic img{min-height:0;aspect-ratio:16/10}
+ .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+ .card h3{font-size:.95rem}.row2{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <header><div class="bar">
-  <a class="logo" id="logo" href="#"></a>
-  <div class="lang" role="group" aria-label="Language"><button data-l="ar" class="on">عربي</button><button data-l="fr">FR</button></div>
-  <button class="ico" id="theme" aria-label="Theme">🌙</button>
+  <a class="logo" id="logo" href="#"></a>
+  <div class="lang" role="group" aria-label="Language"><button data-l="ar" class="on">عربي</button><button data-l="fr">FR</button></div>
+  <button class="ico" id="theme" aria-label="Theme">🌙</button>
 </div></header>
 
 <div class="hero"><div class="box">
-  <div><span class="eyebrow" data-t="eye"></span><h1 data-t="h1"></h1><p data-t="h1p"></p><a class="cta" href="#shop" data-t="shop"></a></div>
-  <div class="col" id="heroimgs"></div>
+  <div><span class="eyebrow" data-t="eye"></span><h1 data-t="h1"></h1><p data-t="h1p"></p><a class="cta" href="#shop" data-t="shop"></a></div>
+  <div class="col" id="heroimgs"></div>
 </div></div>
 <div class="perks">
-  <div class="perk"><i>🚚</i><span data-t="p1"></span></div>
-  <div class="perk"><i>💵</i><span data-t="p2"></span></div>
+  <div class="perk"><i>🚚</i><span data-t="p1"></span></div>
+  <div class="perk"><i>💵</i><span data-t="p2"></span></div>
 </div>
 
 <div class="tiles" id="tiles"></div>
 
 <section id="shop">
-  <div class="head"><div><h2 data-t="coll"></h2><p class="sub" data-t="collp"></p></div>
-  <div class="chips" id="chips"></div></div>
-  <div class="grid" id="grid"></div>
+  <div class="head"><div><h2 data-t="coll"></h2><p class="sub" data-t="collp"></p></div>
+  <div class="chips" id="chips"></div></div>
+  <div class="grid" id="grid"></div>
 </section>
 
 <div class="band"><div class="in">
-  <div id="bandimg"></div>
-  <div class="tx"><h2 data-t="bh"></h2><p data-t="bp"></p>
-   <ul><li data-t="b1"></li><li data-t="b2"></li><li data-t="b3"></li></ul></div>
+  <div id="bandimg"></div>
+  <div class="tx"><h2 data-t="bh"></h2><p data-t="bp"></p>
+   <ul><li data-t="b1"></li><li data-t="b2"></li><li data-t="b3"></li></ul></div>
 </div></div>
 
 <footer><span data-t="foot"></span><small data-t="credit"></small></footer>
@@ -184,39 +184,39 @@ input:focus,select:focus{border-color:var(--rose);outline:none}
 <script>
 /* ============ الإعدادات / Config ============ */
 const STORE_KEY='hijab_orders';
-const API_URL='';                 /* رابط الـ API لاستقبال الطلبات (اختياري) */
-const WHATSAPP='213555000000';    /* رقم واتساب المتجر بصيغة دولية بدون + */
+const API_URL='';          /* رابط الـ API لاستقبال الطلبات (اختياري) */
+const WHATSAPP='213555000000';    /* رقم واتساب المتجر بصيغة دولية بدون + */
 const SIZES=['S','M','L','XL'];
 
 /* ============ صور حقيقية مخصصة للمحجبات (Hijab & Khimar Fashion) ============ */
 const u=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 const IMG={
-  p1:u('1585487000160-6ebcfceb0d03'), p2:u('1583391733956-3750e0ff4e8b'), p3:u('1565084888279-aca607ecce0c'), p4:u('1584273143981-41c073dfe8f8'),
-  p5:u('1609357605129-26f69add5d6e'), p6:u('1515886657613-9f3515b0c78f'), p7:u('1509631179647-0177331693ae'), p8:u('1529139574466-a303027c1d8b'),
-  h1:u('1534528741775-53994a69daeb',1000), h2:u('1490481651871-ab68de25d43d',1000)
+  p1:u('1552874869-5c39ec9288dc'), p2:u('1585728748176-455ac5eed962'), p3:u('1565084888279-aca607ecce0c'), p4:u('1584273143981-41c073dfe8f8'),
+  p5:u('1609357605129-26f69add5d6e'), p6:u('1515886657613-9f3515b0c78f'), p7:u('1509631179647-0177331693ae'), p8:u('1529139574466-a303027c1d8b'),
+  h1:u('1534528741775-53994a69daeb',1000), h2:u('1490481651871-ab68de25d43d',1000)
 };
 
 const C={
-  rose:{ar:'وردي',fr:'Rose',hex:'#e8b4bc'},black:{ar:'أسود',fr:'Noir',hex:'#1f1b20'},
-  ivory:{ar:'عاجي',fr:'Ivoire',hex:'#f3ead9'},sage:{ar:'أخضر زيتي',fr:'Vert sauge',hex:'#8aa596'},
-  plum:{ar:'بنفسجي',fr:'Prune',hex:'#6b3a73'},navy:{ar:'كحلي',fr:'Bleu nuit',hex:'#223052'},
-  sand:{ar:'بيج',fr:'Beige',hex:'#cdb79a'},wine:{ar:'عنابي',fr:'Bordeaux',hex:'#7a2538'}
+  rose:{ar:'وردي',fr:'Rose',hex:'#e8b4bc'},black:{ar:'أسود',fr:'Noir',hex:'#1f1b20'},
+  ivory:{ar:'عاجي',fr:'Ivoire',hex:'#f3ead9'},sage:{ar:'أخضر زيتي',fr:'Vert sauge',hex:'#8aa596'},
+  plum:{ar:'بنفسجي',fr:'Prune',hex:'#6b3a73'},navy:{ar:'كحلي',fr:'Bleu nuit',hex:'#223052'},
+  sand:{ar:'بيج',fr:'Beige',hex:'#cdb79a'},wine:{ar:'عنابي',fr:'Bordeaux',hex:'#7a2538'}
 };
 const PRODUCTS=[
-  {id:1,ar:'حجاب شيفون حريري',fr:'Hijab chiffon soyeux',k:0,price:1200,old:1500,badge:['خصم 20%','-20%'],colors:['rose','black','ivory','sage'],img:IMG.p1,byColor:{}},
-  {id:2,ar:'خمار طويل مزدوج',fr:'Khimar long double couche',k:1,price:2400,colors:['black','navy','plum','wine'],img:IMG.p2,byColor:{}},
-  {id:3,ar:'حجاب جيرسي مريح',fr:'Hijab jersey confort',k:0,price:900,colors:['black','sand','sage','rose','wine'],img:IMG.p3,byColor:{}},
-  {id:4,ar:'خمار ساتان فاخر',fr:'Khimar satin de luxe',k:1,price:3200,colors:['ivory','plum','navy'],img:IMG.p4,byColor:{}},
-  {id:5,ar:'حجاب كريب مطرّز',fr:'Hijab crêpe brodé',k:0,price:1800,colors:['sand','wine','black'],img:IMG.p5,byColor:{}},
-  {id:6,ar:'خمار صلاة بسيط',fr:'Khimar de prière',k:1,price:1500,colors:['ivory','rose','sage'],img:IMG.p6,byColor:{}},
-  {id:7,ar:'حجاب قطن صيفي',fr:'Hijab coton d’été',k:0,price:800,old:1000,badge:['خصم 20%','-20%'],colors:['ivory','sand','rose','navy'],img:IMG.p7,byColor:{}},
-  {id:8,ar:'خمار مخملي شتوي',fr:'Khimar velours d’hiver',k:1,price:2900,colors:['plum','wine','black'],img:IMG.p8,byColor:{}}
+  {id:1,ar:'حجاب شيفون حريري',fr:'Hijab chiffon soyeux',k:0,price:1200,old:1500,badge:['خصم 20%','-20%'],colors:['rose','black','ivory','sage'],img:IMG.p1,byColor:{}},
+  {id:2,ar:'خمار طويل مزدوج',fr:'Khimar long double couche',k:1,price:2400,colors:['black','navy','plum','wine'],img:IMG.p2,byColor:{}},
+  {id:3,ar:'حجاب جيرسي مريح',fr:'Hijab jersey confort',k:0,price:900,colors:['black','sand','sage','rose','wine'],img:IMG.p3,byColor:{}},
+  {id:4,ar:'خمار ساتان فاخر',fr:'Khimar satin de luxe',k:1,price:3200,colors:['ivory','plum','navy'],img:IMG.p4,byColor:{}},
+  {id:5,ar:'حجاب كريب مطرّز',fr:'Hijab crêpe brodé',k:0,price:1800,colors:['sand','wine','black'],img:IMG.p5,byColor:{}},
+  {id:6,ar:'خمار صلاة بسيط',fr:'Khimar de prière',k:1,price:1500,colors:['ivory','rose','sage'],img:IMG.p6,byColor:{}},
+  {id:7,ar:'حجاب قطن صيفي',fr:'Hijab coton d’été',k:0,price:800,old:1000,badge:['خصم 20%','-20%'],colors:['ivory','sand','rose','navy'],img:IMG.p7,byColor:{}},
+  {id:8,ar:'خمار مخملي شتوي',fr:'Khimar velours d’hiver',k:1,price:2900,colors:['plum','wine','black'],img:IMG.p8,byColor:{}}
 ];
 const CATS=[['all','الكل','Tout'],[0,'حجاب','Hijab'],[1,'خمار','Khimar']];
 
 function ph(hex){
- const d=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${hex}'/><stop offset='1' stop-color='${hex}' stop-opacity='.55'/></linearGradient></defs><rect width='400' height='500' fill='#f3e6e9'/><path d='M200 70c-70 0-110 55-110 130 0 40 12 70 12 105 0 55-45 80-70 145h336c-25-65-70-90-70-145 0-35 12-65 12-105 0-75-40-130-110-130z' fill='url(#g)'/><ellipse cx='200' cy='215' rx='48' ry='62' fill='#f6dccb'/><path d='M200 70c-70 0-110 55-110 130 0 25 4 45 8 65 30-70 70-78 102-78s72 8 102 78c4-20 8-40 8-65 0-75-40-130-110-130z' fill='${hex}'/></svg>`;
- return 'data:image/svg+xml;utf8,'+encodeURIComponent(d);
+ const d=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${hex}'/><stop offset='1' stop-color='${hex}' stop-opacity='.55'/></linearGradient></defs><rect width='400' height='500' fill='#f3e6e9'/><path d='M200 70c-70 0-110 55-110 130 0 40 12 70 12 105 0 55-45 80-70 145h336c-25-65-70-90-70-145 0-35 12-65 12-105 0-75-40-130-110-130z' fill='url(#g)'/><ellipse cx='200' cy='215' rx='48' ry='62' fill='#f6dccb'/><path d='M200 70c-70 0-110 55-110 130 0 25 4 45 8 65 30-70 70-78 102-78s72 8 102 78c4-20 8-40 8-65 0-75-40-130-110-130z' fill='${hex}'/></svg>`;
+ return 'data:image/svg+xml;utf8,'+encodeURIComponent(d);
 }
 const src=(p,ck)=>(ck&&p.byColor[ck])||p.img;
 const fb=(p,ck)=>ph(C[ck||p.colors[0]].hex);
@@ -225,38 +225,38 @@ const rawImg=(url,alt,hex='#b4707c',attr='')=>`<img ${attr} referrerpolicy="no-r
 
 /* ============ الولايات / Wilayas ============ */
 const W=`أدرار|Adrar;الشلف|Chlef;الأغواط|Laghouat;أم البواقي|Oum El Bouaghi;باتنة|Batna;بجاية|Béjaïa;بسكرة|Biskra;بشار|Béchar;البليدة|Blida;البويرة|Bouira;تمنراست|Tamanrasset;تبسة|Tébessa;تلمسان|Tlemcen;تيارت|Tiaret;تيزي وزو|Tizi Ouzou;الجزائر|Alger;الجلفة|Djelfa;جيجل|Jijel;سطيف|Sétif;سعيدة|Saïda;سكيكدة|Skikda;سيدي بلعباس|Sidi Bel Abbès;عنابة|Annaba;قالمة|Guelma;قسنطينة|Constantine;المدية|Médéa;مستغانم|Mostaganem;المسيلة|M'Sila;معسكر|Mascara;ورقلة|Ouargla;وهران|Oran;البيض|El Bayadh;إيليزي|Illizi;برج بوعريريج|Bordj Bou Arréridj;بومرداس|Boumerdès;الطارف|El Tarf;تندوف|Tindouf;تيسمسيلت|Tissemsilt;الوادي|El Oued;خنشلة|Khenchela;سوق أهراس|Souk Ahras;تيبازة|Tipaza;ميلة|Mila;عين الدفلى|Aïn Defla;النعامة|Naâma;عين تموشنت|Aïn Témouchent;غرداية|Ghardaïa;غليزان|Relizane;تيميمون|Timimoun;برج باجي مختار|Bordj Badji Mokhtar;أولاد جلال|Ouled Djellal;بني عباس|Béni Abbès;عين صالح|In Salah;عين قزام|In Guezzam;تقرت|Touggourt;جانت|Djanet;المغير|El M'Ghair;المنيعة|El Menia`
- .split(';').map((s,i)=>{const[a,f]=s.split('|');return{code:String(i+1).padStart(2,'0'),ar:a,fr:f}});
+ .split(';').map((s,i)=>{const[a,f]=s.split('|');return{code:String(i+1).padStart(2,'0'),ar:a,fr:f}});
 const COMM={
- '03':['الأغواط','قصر الحيران','بن ناصر بن شهرة','سيدي مخلوف','حاسي الدلاعة','حاسي الرمل','عين ماضي','تاجموت','الخنق','قلتة سيدي سعد','عين سيدي علي','البيضاء','بريدة','الغيشة','الحويطة','تاجرونة','وادي مزي','وادي مرة','سبقاق','آفلو'],
- '16':['الجزائر الوسطى','باب الوادي','باب الزوار','الحراش','القبة','حسين داي','بئر مراد رايس','الدار البيضاء','الرويبة','بئر خادم'],
- '31':['وهران','بئر الجير','السانية','أرزيو','عين الترك','قديل','بوتليليس'],
- '25':['قسنطينة','الخروب','عين سمارة','حامة بوزيان','زيغود يوسف'],
- '09':['البليدة','بوفاريك','موزاية','الأربعاء','بني مراد','الصومعة'],
- '19':['سطيف','العلمة','عين ولمان','عين أرنات','بوعنداس'],
- '05':['باتنة','عين التوتة','بريكة','مروانة','أريس'],
- '47':['غرداية','بونورة','القرارة','متليلي','بريان','العطف'],
- '17':['الجلفة','مسعد','عين وسارة','حاسي بحبح','دار الشيوخ'],
- '07':['بسكرة','طولقة','سيدي عقبة','أورلال','زريبة الوادي'],
- '30':['ورقلة','حاسي مسعود','الرويسات','سيدي خويلد'],
- '23':['عنابة','البوني','الحجار','سيدي عمار','برحال']
+ '03':['الأغواط','قصر الحيران','بن ناصر بن شهرة','سيدي مخلوف','حاسي الدلاعة','حاسي الرمل','عين ماضي','تاجموت','الخنق','قلتة سيدي سعد','عين سيدي علي','البيضاء','بريدة','الغيشة','الحويطة','تاجرونة','وادي مزي','وادي مرة','سبقاق','آفلو'],
+ '16':['الجزائر الوسطى','باب الوادي','باب الزوار','الحراش','القبة','حسين داي','بئر مراد رايس','الدار البيضاء','الرويبة','بئر خادم'],
+ '31':['وهران','بئر الجير','السانية','أرزيو','عين الترك','قديل','بوتليليس'],
+ '25':['قسنطينة','الخروب','عين سمارة','حامة بوزيان','زيغود يوسف'],
+ '09':['البليدة','بوفاريك','موزاية','الأربعاء','بني مراد','الصومعة'],
+ '19':['سطيف','العلمة','عين ولمان','عين أرنات','بوعنداس'],
+ '05':['باتنة','عين التوتة','بريكة','مروانة','أريس'],
+ '47':['غرداية','بونورة','القرارة','متليلي','بريان','العطف'],
+ '17':['الجلفة','مسعد','عين وسارة','حاسي بحبح','دار الشيوخ'],
+ '07':['بسكرة','طولقة','سيدي عقبة','أورلال','زريبة الوادي'],
+ '30':['ورقلة','حاسي مسعود','الرويسات','سيدي خويلد'],
+ '23':['عنابة','البوني','الحجار','سيدي عمار','برحال']
 };
 
 /* ============ الترجمة / i18n ============ */
 const T={
- ar:{logo:'أناقة الحجاب',eye:'مجموعة الموسم الجديد',h1:'أناقة تليق بكِ، وستر يزيدكِ جمالاً',h1p:'حجابات وخمارات بأقمشة ناعمة وألوان هادئة، تصلكِ إلى باب بيتك في كل ولايات الوطن.',shop:'تسوّقي الآن',p1:'توصيل لـ 58 ولاية',p2:'الدفع عند الاستلام',coll:'مجموعتنا',collp:'اضغطي على المنتج لإتمام الطلب',
-  bh:'لماذا أناقة الحجاب؟',bp:'نختار أقمشتنا بعناية لتمنحكِ راحة طوال اليوم ومظهراً راقياً في كل مناسبة.',b1:'أقمشة ناعمة وخفيفة',b2:'ألوان متنوعة تناسب كل الأذواق',b3:'طلب سهل ودفع عند الاستلام',
-  foot:'© 2026 أناقة الحجاب — جميع الحقوق محفوظة',credit:'الصور تعبيرية',
-  tileH:'الحجاب',tileHs:'خفيف وأنيق لكل يوم',tileK:'الخمار',tileKs:'سترٌ كامل وراحة تامة',
-  da:'دج',buy:'اطلبي الآن',name:'الاسم',sur:'اللقب',phone:'رقم الهاتف',wil:'الولاية',wilp:'اختر الولاية',com:'البلدية',comp:'اكتب أو اختر البلدية',size:'القياس',color:'اللون',qty:'الكمية',total:'المجموع',send:'تأكيد الطلب',
-  e_name:'أدخل الاسم واللقب',e_phone:'رقم الهاتف غير صحيح (مثال: 0555123456)',e_wil:'اختر الولاية',e_com:'أدخل البلدية',
-  okt:'تم استلام طلبك بنجاح!',okp:'سنتصل بك قريباً على رقم هاتفك لتأكيد الطلب. شكراً لثقتك.',close:'إغلاق'},
- fr:{logo:'Hijab Élégance',eye:'Nouvelle collection',h1:'Une élégance qui vous ressemble, une pudeur qui vous sublime',h1p:'Hijabs et khimars aux tissus doux et aux teintes apaisantes, livrés chez vous dans toutes les wilayas.',shop:'Découvrir la collection',p1:'Livraison dans 58 wilayas',p2:'Paiement à la livraison',coll:'Notre collection',collp:'Cliquez sur un produit pour commander',
-  bh:'Pourquoi Hijab Élégance ?',bp:'Nous choisissons nos tissus avec soin pour vous offrir confort toute la journée et allure raffinée en toute occasion.',b1:'Tissus doux et légers',b2:'Un large choix de couleurs',b3:'Commande simple, paiement à la livraison',
-  foot:'© 2026 Hijab Élégance — Tous droits réservés',credit:'Photos d’illustration',
-  tileH:'Hijab',tileHs:'Léger et élégant au quotidien',tileK:'Khimar',tileKs:'Couverture complète, confort total',
-  da:'DA',buy:'Commander',name:'Prénom',sur:'Nom',phone:'Téléphone',wil:'Wilaya',wilp:'Choisir la wilaya',com:'Commune',comp:'Saisir ou choisir la commune',size:'Taille',color:'Couleur',qty:'Quantité',total:'Total',send:'Confirmer la commande',
-  e_name:'Saisissez le prénom et le nom',e_phone:'Numéro invalide (ex : 0555123456)',e_wil:'Choisissez la wilaya',e_com:'Saisissez la commune',
-  okt:'Commande bien reçue !',okp:'Nous vous appellerons bientôt pour confirmer votre commande. Merci de votre confiance.',close:'Fermer'}
+ ar:{logo:'أناقة الحجاب',eye:'مجموعة الموسم الجديد',h1:'أناقة تليق بكِ، وستر يزيدكِ جمالاً',h1p:'حجابات وخمارات بأقمشة ناعمة وألوان هادئة، تصلكِ إلى باب بيتك في كل ولايات الوطن.',shop:'تسوّقي الآن',p1:'توصيل لـ 58 ولاية',p2:'الدفع عند الاستلام',coll:'مجموعتنا',collp:'اضغطي على المنتج لإتمام الطلب',
+  bh:'لماذا أناقة الحجاب؟',bp:'نختار أقمشتنا بعناية لتمنحكِ راحة طوال اليوم ومظهراً راقياً في كل مناسبة.',b1:'أقمشة ناعمة وخفيفة',b2:'ألوان متنوعة تناسب كل الأذواق',b3:'طلب سهل ودفع عند الاستلام',
+  foot:'© 2026 أناقة الحجاب — جميع الحقوق محفوظة',credit:'الصور تعبيرية',
+  tileH:'الحجاب',tileHs:'خفيف وأنيق لكل يوم',tileK:'الخمار',tileKs:'سترٌ كامل وراحة تامة',
+  da:'دج',buy:'اطلبي الآن',name:'الاسم',sur:'اللقب',phone:'رقم الهاتف',wil:'الولاية',wilp:'اختر الولاية',com:'البلدية',comp:'اكتب أو اختر البلدية',size:'القياس',color:'اللون',qty:'الكمية',total:'المجموع',send:'تأكيد الطلب',
+  e_name:'أدخل الاسم واللقب',e_phone:'رقم الهاتف غير صحيح (مثال: 0555123456)',e_wil:'اختر الولاية',e_com:'أدخل البلدية',
+  okt:'تم استلام طلبك بنجاح!',okp:'سنتصل بك قريباً على رقم هاتفك لتأكيد الطلب. شكراً لثقتك.',close:'إغلاق'},
+ fr:{logo:'Hijab Élégance',eye:'Nouvelle collection',h1:'Une élégance qui vous ressemble, une pudeur qui vous sublime',h1p:'Hijabs et khimars aux tissus doux et aux teintes apaisantes, livrés chez vous dans toutes les wilayas.',shop:'Découvrir la collection',p1:'Livraison dans 58 wilayas',p2:'Paiement à la livraison',coll:'Notre collection',collp:'Cliquez sur un produit pour commander',
+  bh:'Pourquoi Hijab Élégance ?',bp:'Nous choisissons nos tissus avec soin pour vous offrir confort toute la journée et allure raffinée en toute occasion.',b1:'Tissus doux et légers',b2:'Un large choix de couleurs',b3:'Commande simple, paiement à la livraison',
+  foot:'© 2026 Hijab Élégance — Tous droits réservés',credit:'Photos d’illustration',
+  tileH:'Hijab',tileHs:'Léger et élégant au quotidien',tileK:'Khimar',tileKs:'Couverture complète, confort total',
+  da:'DA',buy:'Commander',name:'Prénom',sur:'Nom',phone:'Téléphone',wil:'Wilaya',wilp:'Choisir la wilaya',com:'Commune',comp:'Saisir ou choisir la commune',size:'Taille',color:'Couleur',qty:'Quantité',total:'Total',send:'Confirmer la commande',
+  e_name:'Saisissez le prénom et le nom',e_phone:'Numéro invalide (ex : 0555123456)',e_wil:'Choisissez la wilaya',e_com:'Saisissez la commune',
+  okt:'Commande bien reçue !',okp:'Nous vous appellerons bientôt pour confirmer votre commande. Merci de votre confiance.',close:'Fermer'}
 };
 let L=localStorage.getItem('lang')||'ar',F='all',cur=null;
 const t=k=>T[L][k],$=s=>document.querySelector(s);
@@ -264,20 +264,20 @@ const fmt=n=>n.toLocaleString(L==='ar'?'ar-DZ':'fr-FR')+' '+t('da');
 const nm=p=>L==='ar'?p.ar:p.fr;
 
 function applyLang(){
- document.documentElement.lang=L;document.documentElement.dir=L==='ar'?'rtl':'ltr';
- document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
- $('#logo').textContent=t('logo');document.title=t('logo');
- document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===L));
- $('#chips').innerHTML=CATS.map(c=>`<button data-c="${c[0]}" class="${F==c[0]?'on':''}">${L==='ar'?c[1]:c[2]}</button>`).join('');
- document.querySelectorAll('#chips button').forEach(b=>b.onclick=()=>{F=b.dataset.c;applyLang()});
- $('#heroimgs').innerHTML=rawImg(IMG.h1,'Hijab')+rawImg(IMG.h2,'Hijab');
- $('#tiles').innerHTML=[[0,IMG.p3,'tileH','tileHs'],[1,IMG.p2,'tileK','tileKs']].map(x=>
-  `<button class="tile" data-k="${x[0]}">${rawImg(x[1],t(x[2]))}<span>${t(x[2])}<small>${t(x[3])}</small></span></button>`).join('');
- document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{F=+b.dataset.k;applyLang();$('#shop').scrollIntoView({behavior:'smooth'})});
- $('#bandimg').innerHTML=rawImg(IMG.p4,'Hijab Élégance');
- $('#wa').href='https://wa.me/'+WHATSAPP;
- renderGrid();
- if($('#ov').classList.contains('show')&&cur)openModal(cur.id,true);
+ document.documentElement.lang=L;document.documentElement.dir=L==='ar'?'rtl':'ltr';
+ document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
+ $('#logo').textContent=t('logo');document.title=t('logo');
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===L));
+ $('#chips').innerHTML=CATS.map(c=>`<button data-c="${c[0]}" class="${F==c[0]?'on':''}">${L==='ar'?c[1]:c[2]}</button>`).join('');
+ document.querySelectorAll('#chips button').forEach(b=>b.onclick=()=>{F=b.dataset.c;applyLang()});
+ $('#heroimgs').innerHTML=rawImg(IMG.h1,'Hijab')+rawImg(IMG.h2,'Hijab');
+ $('#tiles').innerHTML=[[0,IMG.p3,'tileH','tileHs'],[1,IMG.p2,'tileK','tileKs']].map(x=>
+  `<button class="tile" data-k="${x[0]}">${rawImg(x[1],t(x[2]))}<span>${t(x[2])}<small>${t(x[3])}</small></span></button>`).join('');
+ document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{F=+b.dataset.k;applyLang();$('#shop').scrollIntoView({behavior:'smooth'})});
+ $('#bandimg').innerHTML=rawImg(IMG.p4,'Hijab Élégance');
+ $('#wa').href='https://wa.me/'+WHATSAPP;
+ renderGrid();
+ if($('#ov').classList.contains('show')&&cur)openModal(cur.id,true);
 }
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{L=b.dataset.l;localStorage.setItem('lang',L);applyLang()});
 function setTheme(m){document.documentElement.dataset.theme=m;localStorage.setItem('theme',m);$('#theme').textContent=m==='dark'?'☀️':'🌙'}
@@ -285,80 +285,80 @@ $('#theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'
 setTheme(document.documentElement.dataset.theme||'light');
 
 function renderGrid(){
- const list=PRODUCTS.filter(p=>F==='all'||p.k==F);
- $('#grid').innerHTML=list.map(p=>`<button class="card" data-id="${p.id}">
-  <div class="ph">${imgTag(p,null,nm(p),'loading="lazy"')}${p.badge?`<span class="badge">${p.badge[L==='ar'?0:1]}</span>`:''}</div>
-  <div class="b"><div class="cat">${L==='ar'?CATS[p.k+1][1]:CATS[p.k+1][2]}</div><h3>${nm(p)}</h3>
-  <div class="row2"><div class="price">${fmt(p.price)}${p.old?`<span class="old">${fmt(p.old)}</span>`:''}</div>
-  <div class="dots">${p.colors.map(c=>`<i style="background:${C[c].hex}"></i>`).join('')}</div></div>
-  <div class="buy">${t('buy')}</div></div></button>`).join('');
- document.querySelectorAll('.card').forEach(c=>c.onclick=()=>openModal(+c.dataset.id));
+ const list=PRODUCTS.filter(p=>F==='all'||p.k==F);
+ $('#grid').innerHTML=list.map(p=>`<button class="card" data-id="${p.id}">
+  <div class="ph">${imgTag(p,null,nm(p),'loading="lazy"')}${p.badge?`<span class="badge">${p.badge[L==='ar'?0:1]}</span>`:''}</div>
+  <div class="b"><div class="cat">${L==='ar'?CATS[p.k+1][1]:CATS[p.k+1][2]}</div><h3>${nm(p)}</h3>
+  <div class="row2"><div class="price">${fmt(p.price)}${p.old?`<span class="old">${fmt(p.old)}</span>`:''}</div>
+  <div class="dots">${p.colors.map(c=>`<i style="background:${C[c].hex}"></i>`).join('')}</div></div>
+  <div class="buy">${t('buy')}</div></div></button>`).join('');
+ document.querySelectorAll('.card').forEach(c=>c.onclick=()=>openModal(+c.dataset.id));
 }
 
 /* ============ نافذة الطلب ============ */
 function openModal(id,keep){
- const p=PRODUCTS.find(x=>x.id===id),old=keep?collect():null;cur=p;
- $('#modal').innerHTML=`
- <div class="pic"><button class="x" type="button" aria-label="${t('close')}" id="cl">×</button><div id="pimg">${imgTag(p,old?.color,nm(p))}</div></div>
- <form id="f" novalidate>
-  <h3>${nm(p)}</h3><div class="p">${fmt(p.price)}</div>
-  <div class="row"><div><label for="n">${t('name')}</label><input id="n" autocomplete="given-name"></div>
-  <div><label for="s">${t('sur')}</label><input id="s" autocomplete="family-name"></div></div>
-  <label for="ph">${t('phone')}</label><input id="ph" type="tel" inputmode="tel" dir="ltr" maxlength="10" placeholder="05 55 12 34 56" style="text-align:start">
-  <div class="row"><div><label for="w">${t('wil')}</label><select id="w"><option value="">${t('wilp')}</option>${W.map(w=>`<option value="${w.code}">${w.code} - ${L==='ar'?w.ar:w.fr}</option>`).join('')}</select></div>
-  <div><label for="c">${t('com')}</label><input id="c" list="cl-list" placeholder="${t('comp')}"><datalist id="cl-list"></datalist></div></div>
-  <label>${t('size')}</label>
-  <div class="sizes">${SIZES.map((s,i)=>`<label><input type="radio" name="sz" value="${s}" ${i?'':'checked'}><span>${s}</span></label>`).join('')}</div>
-  <label>${t('color')}</label>
-  <div class="sw">${p.colors.map((c,i)=>`<label title="${C[c][L]}"><input type="radio" name="col" value="${c}" ${i?'':'checked'}><span style="background:${C[c].hex}"></span></label>`).join('')}</div>
-  <div class="cn" id="cn">${C[p.colors[0]][L]}</div>
-  <label>${t('qty')}</label>
-  <div class="qty"><button type="button" id="mn">−</button><input id="q" type="number" min="1" max="20" value="1"><button type="button" id="pl">+</button></div>
-  <div class="tot"><span>${t('total')}</span><span id="tt"></span></div>
-  <button class="go" type="submit">${t('send')}</button><div class="err" id="er"></div>
- </form>`;
- $('#ov').classList.add('show');document.body.style.overflow='hidden';
- const upd=()=>{$('#tt').textContent=fmt(p.price*Math.max(1,+$('#q').value||1))};
- $('#w').onchange=()=>{const l=COMM[$('#w').value]||[];$('#cl-list').innerHTML=l.map(x=>`<option value="${x}">`).join('');$('#c').value=''};
- $('#mn').onclick=()=>{$('#q').value=Math.max(1,+$('#q').value-1);upd()};
- $('#pl').onclick=()=>{$('#q').value=Math.min(20,+$('#q').value+1);upd()};
- $('#q').oninput=upd;
- $('#f').querySelectorAll('[name=col]').forEach(r=>r.onchange=()=>{$('#cn').textContent=C[r.value][L];$('#pimg').innerHTML=imgTag(p,r.value,nm(p))});
- $('#cl').onclick=closeModal;
- $('#f').onsubmit=e=>{e.preventDefault();submit()};
- if(old){for(const k of ['n','s','ph','q'])if(old[k]!=null)$('#'+k).value=old[k];
-  if(old.w){$('#w').value=old.w;$('#w').onchange();$('#c').value=old.c||''}
-  for(const[n,v]of[['col',old.color],['sz',old.sz]]){const r=$(`[name=${n}][value="${v}"]`);if(r)r.checked=true}
-  $('#cn').textContent=C[old.color]?.[L]||''}
- upd();
+ const p=PRODUCTS.find(x=>x.id===id),old=keep?collect():null;cur=p;
+ $('#modal').innerHTML=`
+ <div class="pic"><button class="x" type="button" aria-label="${t('close')}" id="cl">×</button><div id="pimg">${imgTag(p,old?.color,nm(p))}</div></div>
+ <form id="f" novalidate>
+  <h3>${nm(p)}</h3><div class="p">${fmt(p.price)}</div>
+  <div class="row"><div><label for="n">${t('name')}</label><input id="n" autocomplete="given-name"></div>
+  <div><label for="s">${t('sur')}</label><input id="s" autocomplete="family-name"></div></div>
+  <label for="ph">${t('phone')}</label><input id="ph" type="tel" inputmode="tel" dir="ltr" maxlength="10" placeholder="05 55 12 34 56" style="text-align:start">
+  <div class="row"><div><label for="w">${t('wil')}</label><select id="w"><option value="">${t('wilp')}</option>${W.map(w=>`<option value="${w.code}">${w.code} - ${L==='ar'?w.ar:w.fr}</option>`).join('')}</select></div>
+  <div><label for="c">${t('com')}</label><input id="c" list="cl-list" placeholder="${t('comp')}"><datalist id="cl-list"></datalist></div></div>
+  <label>${t('size')}</label>
+  <div class="sizes">${SIZES.map((s,i)=>`<label><input type="radio" name="sz" value="${s}" ${i?'':'checked'}><span>${s}</span></label>`).join('')}</div>
+  <label>${t('color')}</label>
+  <div class="sw">${p.colors.map((c,i)=>`<label title="${C[c][L]}"><input type="radio" name="col" value="${c}" ${i?'':'checked'}><span style="background:${C[c].hex}"></span></label>`).join('')}</div>
+  <div class="cn" id="cn">${C[p.colors[0]][L]}</div>
+  <label>${t('qty')}</label>
+  <div class="qty"><button type="button" id="mn">−</button><input id="q" type="number" min="1" max="20" value="1"><button type="button" id="pl">+</button></div>
+  <div class="tot"><span>${t('total')}</span><span id="tt"></span></div>
+  <button class="go" type="submit">${t('send')}</button><div class="err" id="er"></div>
+ </form>`;
+ $('#ov').classList.add('show');document.body.style.overflow='hidden';
+ const upd=()=>{$('#tt').textContent=fmt(p.price*Math.max(1,+$('#q').value||1))};
+ $('#w').onchange=()=>{const l=COMM[$('#w'].value]||[];$('#cl-list').innerHTML=l.map(x=>`<option value="${x}">`).join('');$('#c').value=''};
+ $('#mn').onclick=()=>{$('#q').value=Math.max(1,+$('#q').value-1);upd()};
+ $('#pl').onclick=()=>{$('#q').value=Math.min(20,+$('#q').value+1);upd()};
+ $('#q').oninput=upd;
+ $('#f').querySelectorAll('[name=col]').forEach(r=>r.onchange=()=>{$('#cn').textContent=C[r.value][L];$('#pimg').innerHTML=imgTag(p,r.value,nm(p))});
+ $('#cl').onclick=closeModal;
+ $('#f').onsubmit=e=>{e.preventDefault();submit()};
+ if(old){for(const k of ['n','s','ph','q'])if(old[k]!=null)$('#'+k).value=old[k];
+  if(old.w){$('#w').value=old.w;$('#w').onchange();$('#c').value=old.c||''}
+  for(const[n,v]of[['col',old.color],['sz',old.sz]]){const r=$(`[name=${n}][value="${v}"]`);if(r)r.checked=true}
+  $('#cn').textContent=C[old.color]?.[L]||''}
+ upd();
 }
 function collect(){const g=id=>$('#'+id)?.value;const ch=n=>document.querySelector(`[name=${n}]:checked`)?.value;
- return{n:g('n'),s:g('s'),ph:g('ph'),w:g('w'),c:g('c'),q:g('q'),sz:ch('sz'),color:ch('col')}}
+ return{n:g('n'),s:g('s'),ph:g('ph'),w:g('w'),c:g('c'),q:g('q'),sz:ch('sz'),color:ch('col')}}
 function closeModal(){$('#ov').classList.remove('show');document.body.style.overflow='';cur=null}
 $('#ov').addEventListener('click',e=>{if(e.target.id==='ov')closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
 async function submit(){
- const v=collect(),f=$('#f');
- const bad=(id,m)=>{f.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));$('#'+id).classList.add('bad');$('#'+id).focus();$('#er').textContent=m};
- if(v.n.trim().length<2)return bad('n',t('e_name'));
- if(v.s.trim().length<2)return bad('s',t('e_name'));
- if(!/^0[567]\d{8}$/.test(v.ph.replace(/\s/g,'')))return bad('ph',t('e_phone'));
- if(!v.w)return bad('w',t('e_wil'));
- if(v.c.trim().length<2)return bad('c',t('e_com'));
- const w=W.find(x=>x.code===v.w),q=Math.max(1,+v.q||1);
- const order={id:'C'+Date.now().toString(36).toUpperCase(),date:new Date().toISOString(),
-  name:v.n.trim(),surname:v.s.trim(),phone:v.ph.replace(/\s/g,''),
-  wilayaCode:w.code,wilayaAr:w.ar,wilayaFr:w.fr,commune:v.c.trim(),
-  productId:cur.id,productAr:cur.ar,productFr:cur.fr,size:v.sz,
-  colorAr:C[v.color].ar,colorFr:C[v.color].fr,colorHex:C[v.color].hex,
-  qty:q,total:cur.price*q,status:'pending'};
- try{
-  if(API_URL){const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(order)});if(!r.ok)throw 0}
-  else{const a=JSON.parse(localStorage.getItem(STORE_KEY)||'[]');a.unshift(order);localStorage.setItem(STORE_KEY,JSON.stringify(a))}
- }catch(e){return $('#er').textContent='Erreur / خطأ'}
- $('#modal').innerHTML=`<div class="ok"><b>✓</b><h3>${t('okt')}</h3><p style="margin:8px 0 22px;color:var(--mute)">${t('okp')}</p><button class="go" style="max-width:220px" id="cl2">${t('close')}</button></div>`;
- $('#cl2').onclick=closeModal;
+ const v=collect(),f=$('#f');
+ const bad=(id,m)=>{f.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));$('#'+id).classList.add('bad');$('#'+id).focus();$('#er').textContent=m};
+ if(v.n.trim().length<2)return bad('n',t('e_name'));
+ if(v.s.trim().length<2)return bad('s',t('e_name'));
+ if(!/^0[567]\d{8}$/.test(v.ph.replace(/\s/g,'')))return bad('ph',t('e_phone'));
+ if(!v.w)return bad('w',t('e_wil'));
+ if(v.c.trim().length<2)return bad('c',t('e_com'));
+ const w=W.find(x=>x.code===v.w),q=Math.max(1,+v.q||1);
+ const order={id:'C'+Date.now().toString(36).toUpperCase(),date:new Date().toISOString(),
+  name:v.n.trim(),surname:v.s.trim(),phone:v.ph.replace(/\s/g,''),
+  wilayaCode:w.code,wilayaAr:w.ar,wilayaFr:w.fr,commune:v.c.trim(),
+  productId:cur.id,productAr:cur.ar,productFr:cur.fr,size:v.sz,
+  colorAr:C[v.color].ar,colorFr:C[v.color].fr,colorHex:C[v.color].hex,
+  qty:q,total:cur.price*q,status:'pending'};
+ try{
+  if(API_URL){const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(order)});if(!r.ok)throw 0}
+  else{const a=JSON.parse(localStorage.getItem(STORE_KEY)||'[]');a.unshift(order);localStorage.setItem(STORE_KEY,JSON.stringify(a))}
+ }catch(e){return $('#er').textContent='Erreur / خطأ'}
+ $('#modal').innerHTML=`<div class="ok"><b>✓</b><h3>${t('okt')}</h3><p style="margin:8px 0 22px;color:var(--mute)">${t('okp')}</p><button class="go" style="max-width:220px" id="cl2">${t('close')}</button></div>`;
+ $('#cl2').onclick=closeModal;
 }
 applyLang();
 </script>
