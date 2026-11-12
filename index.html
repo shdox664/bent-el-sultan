@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Tajawal:wght@400;500;700;800&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){}</script>
 <style>
-:root{--bg:#fbf6f7;--bg2:#f4e9ec;--ink:#2d1a31;--mute:#7b6579;--head:#4a2650;--brand:#4a2650;--brand-h:#5f3368;--on:#fff;--rose:#b4707c;--card:#fff;--line:#ead8dc;--sage:#4f8a6d;--shadow:0 12px 30px rgba(74,38,80,.14);--r:20px}
-[data-theme=dark]{--bg:#150f18;--bg2:#1e1623;--ink:#f3e9f4;--mute:#b5a2b8;--head:#e8c3ee;--brand:#c98bd3;--brand-h:#d8a3e1;--on:#25122a;--rose:#e0959f;--card:#201826;--line:#35283b;--sage:#6fc097;--shadow:0 12px 30px rgba(0,0,0,.5)}
+:root{--bg:#fbf6f7;--bg2:#f4e9ec;--ink:#2d1a31;--mute:#7b6579;--head:#4a2650;--brand:#4a2650;--brand-h:#5f3368;--on:#fff;--rose:#b4707c;--card:#fff;--line:#ead8dc;--sage:#4f8a6d;--shadow:0 14px 34px rgba(74,38,80,.16);--r:20px}
+[data-theme=dark]{--bg:#150f18;--bg2:#1e1623;--ink:#f3e9f4;--mute:#b5a2b8;--head:#e8c3ee;--brand:#c98bd3;--brand-h:#d8a3e1;--on:#25122a;--rose:#e0959f;--card:#201826;--line:#35283b;--sage:#6fc097;--shadow:0 14px 34px rgba(0,0,0,.55)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;transition:background .25s,color .25s}
@@ -25,18 +25,38 @@ header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 8
 .lang button{border:0;background:none;padding:5px 14px;font-weight:700;color:var(--head)}
 .lang button.on{background:var(--head);color:var(--bg)}
 .ico{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);font-size:1.1rem;display:grid;place-items:center}
+
+/* hero */
 .hero{max-width:1200px;margin:22px auto 0;padding:0 20px}
-.hero .box{background:linear-gradient(120deg,#3a1b42,#6d3a70 55%,#b4707c);border-radius:28px;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding:clamp(26px,5vw,60px);overflow:hidden;position:relative}
-.hero h1{font-size:clamp(1.9rem,4.8vw,3.3rem);line-height:1.2;font-weight:800}
-[lang=fr] .hero h1{font-weight:700;font-size:clamp(2.2rem,5vw,3.7rem)}
+.hero .box{background:linear-gradient(120deg,#2f1436,#5a2d62 55%,#a96672);border-radius:32px;color:#fff;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:clamp(26px,5vw,64px);overflow:hidden;position:relative;isolation:isolate}
+.hero .box::before,.hero .box::after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(2px)}
+.hero .box::before{width:380px;height:380px;background:rgba(255,255,255,.07);top:-140px;inset-inline-start:-100px}
+.hero .box::after{width:260px;height:260px;background:rgba(255,214,222,.10);bottom:-110px;inset-inline-end:30%}
+.eyebrow{display:inline-block;font-size:.88rem;letter-spacing:.04em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 16px;border-radius:30px;margin-bottom:16px}
+.hero h1{font-size:clamp(1.9rem,4.8vw,3.3rem);line-height:1.25;font-weight:800}
+[lang=fr] .hero h1{font-weight:700;font-size:clamp(2.2rem,5vw,3.7rem);line-height:1.1}
 .hero p{margin:14px 0 26px;opacity:.93;font-size:1.08rem;max-width:30em}
-.cta{display:inline-block;background:#fff;color:#4a2650;padding:13px 32px;border-radius:30px;font-weight:800;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.col img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;display:block;box-shadow:0 10px 24px rgba(0,0,0,.3)}
-.col img:nth-child(2){margin-top:26px}
-.perks{max-width:1200px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.perk{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 16px;display:flex;gap:10px;align-items:center;font-weight:500}
-.perk i{font-style:normal;font-size:1.4rem}
+.cta{display:inline-block;background:#fff;color:#4a2650;padding:14px 34px;border-radius:30px;font-weight:800;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.25);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
+.col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.col img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:22px;display:block;box-shadow:0 14px 30px rgba(0,0,0,.35);border:3px solid rgba(255,255,255,.85)}
+.col img:nth-child(2){margin-top:34px}
+
+/* perks */
+.perks{max-width:1200px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.perk{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;display:flex;gap:12px;align-items:center;font-weight:700}
+.perk i{font-style:normal;font-size:1.5rem;width:44px;height:44px;border-radius:50%;background:var(--bg2);display:grid;place-items:center}
+
+/* categories */
+.tiles{max-width:1200px;margin:auto;padding:46px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tile{position:relative;border:0;border-radius:26px;overflow:hidden;aspect-ratio:16/10;display:block;width:100%;padding:0;cursor:pointer;background:var(--bg2)}
+.tile img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;transition:transform .6s}
+.tile:hover img{transform:scale(1.07)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(35,12,42,.78),transparent 60%)}
+.tile span{position:absolute;z-index:2;bottom:18px;inset-inline-start:22px;color:#fff;font-size:1.7rem;font-weight:800;text-align:start;line-height:1.2}
+.tile small{display:block;font-size:.92rem;font-weight:400;opacity:.9;margin-top:2px}
+[lang=fr] .tile span{font-family:'Cormorant Garamond',serif;font-size:2rem}
+
 section{max-width:1200px;margin:auto;padding:46px 20px 56px}
 .head{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:24px}
 h2{font-size:1.9rem;color:var(--head);line-height:1.2}
@@ -47,11 +67,11 @@ h2{font-size:1.9rem;color:var(--head);line-height:1.2}
 .chips button.on{background:var(--brand);border-color:var(--brand);color:var(--on)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
 .card{background:var(--card);border-radius:var(--r);border:1px solid var(--line);overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;text-align:start;padding:0;display:block;width:100%;font-size:inherit}
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .ph{position:relative;overflow:hidden;background:var(--bg2);aspect-ratio:4/5}
-.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.card:hover .ph img{transform:scale(1.06)}
-.badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--rose);color:#fff;font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:20px}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform .6s}
+.card:hover .ph img{transform:scale(1.07)}
+.badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--rose);color:#fff;font-size:.8rem;font-weight:800;padding:3px 12px;border-radius:20px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
 .card .b{padding:14px 16px 16px}
 .cat{font-size:.85rem;color:var(--rose);font-weight:500}
 .card h3{font-size:1.05rem;font-weight:700;margin-top:2px}
@@ -60,17 +80,31 @@ h2{font-size:1.9rem;color:var(--head);line-height:1.2}
 .old{color:var(--mute);text-decoration:line-through;font-size:.85rem;margin-inline-start:6px;font-weight:400}
 .dots{display:flex;gap:5px}
 .dots i{width:15px;height:15px;border-radius:50%;border:1px solid rgba(128,128,128,.35)}
-.buy{margin-top:12px;width:100%;padding:10px;border-radius:12px;border:0;background:var(--brand);color:var(--on);font-weight:700}
+.buy{margin-top:12px;width:100%;padding:10px;border-radius:12px;border:0;background:var(--brand);color:var(--on);font-weight:700;text-align:center}
 .card:hover .buy{background:var(--brand-h)}
+
+/* story band */
+.band{max-width:1200px;margin:0 auto;padding:0 20px 56px}
+.band .in{background:var(--bg2);border:1px solid var(--line);border-radius:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:0;overflow:hidden;align-items:stretch}
+.band img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;min-height:280px}
+.band .tx{padding:clamp(24px,4vw,52px);align-self:center}
+.band h2{margin-bottom:10px}
+.band p{color:var(--mute);margin-bottom:18px}
+.band ul{list-style:none;padding:0;display:grid;gap:8px}
+.band li{font-weight:700;display:flex;gap:10px;align-items:center}
+.band li::before{content:"✓";display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--sage);color:#fff;font-size:.8rem;flex:none}
+
 footer{background:var(--bg2);border-top:1px solid var(--line);text-align:center;padding:30px 20px;color:var(--mute)}
+footer small{display:block;margin-top:6px;font-size:.82rem;opacity:.8}
 .wa{position:fixed;bottom:18px;inset-inline-end:18px;z-index:25;width:54px;height:54px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.6rem;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+
 /* modal */
 .ov{position:fixed;inset:0;background:rgba(15,6,18,.62);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:14px;z-index:50}
 .ov.show{display:flex}
 .modal{background:var(--card);border-radius:24px;max-width:900px;width:100%;max-height:94vh;overflow:auto;display:grid;grid-template-columns:.9fr 1.1fr;animation:pop .22s ease}
 @keyframes pop{from{transform:translateY(14px) scale(.97);opacity:0}to{transform:none;opacity:1}}
 .modal .pic{background:var(--bg2);position:relative}
-.modal .pic img{width:100%;height:100%;object-fit:cover;display:block;min-height:300px}
+.modal .pic img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;min-height:300px}
 .modal form{padding:26px}
 .x{position:absolute;top:12px;inset-inline-start:12px;width:38px;height:38px;border-radius:50%;border:0;background:var(--card);font-size:1.3rem;box-shadow:0 2px 10px rgba(0,0,0,.3);z-index:2}
 .modal h3{font-size:1.45rem;color:var(--head);line-height:1.3}
@@ -101,6 +135,8 @@ input:focus,select:focus{border-color:var(--rose);outline:none}
 .ok b{display:grid;place-items:center;width:74px;height:74px;border-radius:50%;background:var(--sage);color:#fff;font-size:2.1rem;margin:0 auto 16px}
 @media(max-width:760px){
  .hero .box{grid-template-columns:1fr}.col{display:none}
+ .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{aspect-ratio:4/5}.tile span{font-size:1.2rem;bottom:12px;inset-inline-start:14px}.tile small{display:none}
+ .band .in{grid-template-columns:1fr}.band img{min-height:0;aspect-ratio:16/10}
  .ov{align-items:flex-end;padding:0}
  .modal{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-height:92vh}
  .modal .pic img{min-height:0;aspect-ratio:16/10}
@@ -118,21 +154,29 @@ input:focus,select:focus{border-color:var(--rose);outline:none}
 </div></header>
 
 <div class="hero"><div class="box">
-  <div><h1 data-t="h1"></h1><p data-t="h1p"></p><a class="cta" href="#shop" data-t="shop"></a></div>
+  <div><span class="eyebrow" data-t="eye"></span><h1 data-t="h1"></h1><p data-t="h1p"></p><a class="cta" href="#shop" data-t="shop"></a></div>
   <div class="col" id="heroimgs"></div>
 </div></div>
 <div class="perks">
   <div class="perk"><i>🚚</i><span data-t="p1"></span></div>
   <div class="perk"><i>💵</i><span data-t="p2"></span></div>
-  <div class="perk"><i>🔄</i><span data-t="p3"></span></div>
 </div>
+
+<div class="tiles" id="tiles"></div>
 
 <section id="shop">
   <div class="head"><div><h2 data-t="coll"></h2><p class="sub" data-t="collp"></p></div>
   <div class="chips" id="chips"></div></div>
   <div class="grid" id="grid"></div>
 </section>
-<footer data-t="foot"></footer>
+
+<div class="band"><div class="in">
+  <div id="bandimg"></div>
+  <div class="tx"><h2 data-t="bh"></h2><p data-t="bp"></p>
+   <ul><li data-t="b1"></li><li data-t="b2"></li><li data-t="b3"></li></ul></div>
+</div></div>
+
+<footer><span data-t="foot"></span><small data-t="credit"></small></footer>
 <a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <div class="ov" id="ov" role="dialog" aria-modal="true"><div class="modal" id="modal"></div></div>
@@ -142,27 +186,31 @@ input:focus,select:focus{border-color:var(--rose);outline:none}
 const STORE_KEY='hijab_orders';
 const API_URL='';                 /* رابط الـ API لاستقبال الطلبات (اختياري) */
 const WHATSAPP='213555000000';    /* رقم واتساب المتجر بصيغة دولية بدون + */
-const SIZES=['S','M','L','XL'];   /* القياسات المتاحة */
+const SIZES=['S','M','L','XL'];
 
-/* ============ المنتجات / Products ============
-   ضع صورك الحقيقية في مجلد images بنفس الأسماء (1.jpg ... 8.jpg)
-   أو غيّر المسار في img. إن لم توجد الصورة تظهر صورة بديلة تلقائياً */
-const C={
- rose:{ar:'وردي',fr:'Rose',hex:'#e8b4bc'},black:{ar:'أسود',fr:'Noir',hex:'#1f1b20'},
- ivory:{ar:'عاجي',fr:'Ivoire',hex:'#f3ead9'},sage:{ar:'أخضر زيتي',fr:'Vert sauge',hex:'#8aa596'},
- plum:{ar:'بنفسجي',fr:'Prune',hex:'#6b3a73'},navy:{ar:'كحلي',fr:'Bleu nuit',hex:'#223052'},
- sand:{ar:'بيج',fr:'Beige',hex:'#cdb79a'},wine:{ar:'عنابي',fr:'Bordeaux',hex:'#7a2538'}
+/* ============ صور احترافية عالية الجودة (Unsplash Direct Links) ============ */
+const u=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+const IMG={
+  p1:u('1584273143981-41c073dfe8f8'), p2:u('1609357605129-26f69add5d6e'), p3:u('1515886657613-9f3515b0c78f'), p4:u('1490481651871-ab68de25d43d'),
+  p5:u('1509631179647-0177331693ae'), p6:u('1534528741775-53994a69daeb'), p7:u('1529139574466-a303027c1d8b'), p8:u('1445205170230-053b83016050'),
+  h1:u('1583391733956-3750e0ff4e8b',1000), h2:u('1565084888279-aca607ecce0c',1000)
 };
-/* byColor اختياري: صورة لكل لون مثل {rose:'images/1-rose.jpg'} */
+
+const C={
+  rose:{ar:'وردي',fr:'Rose',hex:'#e8b4bc'},black:{ar:'أسود',fr:'Noir',hex:'#1f1b20'},
+  ivory:{ar:'عاجي',fr:'Ivoire',hex:'#f3ead9'},sage:{ar:'أخضر زيتي',fr:'Vert sauge',hex:'#8aa596'},
+  plum:{ar:'بنفسجي',fr:'Prune',hex:'#6b3a73'},navy:{ar:'كحلي',fr:'Bleu nuit',hex:'#223052'},
+  sand:{ar:'بيج',fr:'Beige',hex:'#cdb79a'},wine:{ar:'عنابي',fr:'Bordeaux',hex:'#7a2538'}
+};
 const PRODUCTS=[
- {id:1,ar:'حجاب شيفون حريري',fr:'Hijab chiffon soyeux',k:0,price:1200,old:1500,badge:['خصم 20%','-20%'],colors:['rose','black','ivory','sage'],img:'images/1.jpg',byColor:{}},
- {id:2,ar:'خمار طويل مزدوج',fr:'Khimar long double couche',k:1,price:2400,badge:['الأكثر مبيعاً','Best-seller'],colors:['black','navy','plum','wine'],img:'images/2.jpg',byColor:{}},
- {id:3,ar:'حجاب جيرسي مريح',fr:'Hijab jersey confort',k:0,price:900,colors:['black','sand','sage','rose','wine'],img:'images/3.jpg',byColor:{}},
- {id:4,ar:'خمار ساتان فاخر',fr:'Khimar satin de luxe',k:1,price:3200,badge:['جديد','Nouveau'],colors:['ivory','plum','navy'],img:'images/4.jpg',byColor:{}},
- {id:5,ar:'حجاب كريب مطرّز',fr:'Hijab crêpe brodé',k:0,price:1800,colors:['sand','wine','black'],img:'images/5.jpg',byColor:{}},
- {id:6,ar:'خمار صلاة بسيط',fr:'Khimar de prière',k:1,price:1500,colors:['ivory','rose','sage'],img:'images/6.jpg',byColor:{}},
- {id:7,ar:'حجاب قطن صيفي',fr:'Hijab coton d’été',k:0,price:800,old:1000,badge:['خصم 20%','-20%'],colors:['ivory','sand','rose','navy'],img:'images/7.jpg',byColor:{}},
- {id:8,ar:'خمار مخملي شتوي',fr:'Khimar velours d’hiver',k:1,price:2900,colors:['plum','wine','black'],img:'images/8.jpg',byColor:{}}
+  {id:1,ar:'حجاب شيفون حريري',fr:'Hijab chiffon soyeux',k:0,price:1200,old:1500,badge:['خصم 20%','-20%'],colors:['rose','black','ivory','sage'],img:IMG.p1,byColor:{}},
+  {id:2,ar:'خمار طويل مزدوج',fr:'Khimar long double couche',k:1,price:2400,colors:['black','navy','plum','wine'],img:IMG.p2,byColor:{}},
+  {id:3,ar:'حجاب جيرسي مريح',fr:'Hijab jersey confort',k:0,price:900,colors:['black','sand','sage','rose','wine'],img:IMG.p3,byColor:{}},
+  {id:4,ar:'خمار ساتان فاخر',fr:'Khimar satin de luxe',k:1,price:3200,colors:['ivory','plum','navy'],img:IMG.p4,byColor:{}},
+  {id:5,ar:'حجاب كريب مطرّز',fr:'Hijab crêpe brodé',k:0,price:1800,colors:['sand','wine','black'],img:IMG.p5,byColor:{}},
+  {id:6,ar:'خمار صلاة بسيط',fr:'Khimar de prière',k:1,price:1500,colors:['ivory','rose','sage'],img:IMG.p6,byColor:{}},
+  {id:7,ar:'حجاب قطن صيفي',fr:'Hijab coton d’été',k:0,price:800,old:1000,badge:['خصم 20%','-20%'],colors:['ivory','sand','rose','navy'],img:IMG.p7,byColor:{}},
+  {id:8,ar:'خمار مخملي شتوي',fr:'Khimar velours d’hiver',k:1,price:2900,colors:['plum','wine','black'],img:IMG.p8,byColor:{}}
 ];
 const CATS=[['all','الكل','Tout'],[0,'حجاب','Hijab'],[1,'خمار','Khimar']];
 
@@ -172,12 +220,12 @@ function ph(hex){
 }
 const src=(p,ck)=>(ck&&p.byColor[ck])||p.img;
 const fb=(p,ck)=>ph(C[ck||p.colors[0]].hex);
-const imgTag=(p,ck,alt='',attr='')=>`<img ${attr} src="${src(p,ck)}" alt="${alt}" data-fb="${fb(p,ck)}" onerror="this.onerror=null;this.src=this.dataset.fb">`;
+const imgTag=(p,ck,alt='',attr='')=>`<img ${attr} referrerpolicy="no-referrer" src="${src(p,ck)}" alt="${alt}" data-fb="${fb(p,ck)}" onerror="this.onerror=null;this.src=this.dataset.fb">`;
+const rawImg=(url,alt,hex='#b4707c',attr='')=>`<img ${attr} referrerpolicy="no-referrer" src="${url}" alt="${alt}" data-fb="${ph(hex)}" onerror="this.onerror=null;this.src=this.dataset.fb">`;
 
 /* ============ الولايات / Wilayas ============ */
 const W=`أدرار|Adrar;الشلف|Chlef;الأغواط|Laghouat;أم البواقي|Oum El Bouaghi;باتنة|Batna;بجاية|Béjaïa;بسكرة|Biskra;بشار|Béchar;البليدة|Blida;البويرة|Bouira;تمنراست|Tamanrasset;تبسة|Tébessa;تلمسان|Tlemcen;تيارت|Tiaret;تيزي وزو|Tizi Ouzou;الجزائر|Alger;الجلفة|Djelfa;جيجل|Jijel;سطيف|Sétif;سعيدة|Saïda;سكيكدة|Skikda;سيدي بلعباس|Sidi Bel Abbès;عنابة|Annaba;قالمة|Guelma;قسنطينة|Constantine;المدية|Médéa;مستغانم|Mostaganem;المسيلة|M'Sila;معسكر|Mascara;ورقلة|Ouargla;وهران|Oran;البيض|El Bayadh;إيليزي|Illizi;برج بوعريريج|Bordj Bou Arréridj;بومرداس|Boumerdès;الطارف|El Tarf;تندوف|Tindouf;تيسمسيلت|Tissemsilt;الوادي|El Oued;خنشلة|Khenchela;سوق أهراس|Souk Ahras;تيبازة|Tipaza;ميلة|Mila;عين الدفلى|Aïn Defla;النعامة|Naâma;عين تموشنت|Aïn Témouchent;غرداية|Ghardaïa;غليزان|Relizane;تيميمون|Timimoun;برج باجي مختار|Bordj Badji Mokhtar;أولاد جلال|Ouled Djellal;بني عباس|Béni Abbès;عين صالح|In Salah;عين قزام|In Guezzam;تقرت|Touggourt;جانت|Djanet;المغير|El M'Ghair;المنيعة|El Menia`
  .split(';').map((s,i)=>{const[a,f]=s.split('|');return{code:String(i+1).padStart(2,'0'),ar:a,fr:f}});
-/* بلديات (أمثلة) — بقية الولايات يكتب الزبون البلدية يدوياً. أضف رمز الولاية ومصفوفة بلدياتها هنا */
 const COMM={
  '03':['الأغواط','قصر الحيران','بن ناصر بن شهرة','سيدي مخلوف','حاسي الدلاعة','حاسي الرمل','عين ماضي','تاجموت','الخنق','قلتة سيدي سعد','عين سيدي علي','البيضاء','بريدة','الغيشة','الحويطة','تاجرونة','وادي مزي','وادي مرة','سبقاق','آفلو'],
  '16':['الجزائر الوسطى','باب الوادي','باب الزوار','الحراش','القبة','حسين داي','بئر مراد رايس','الدار البيضاء','الرويبة','بئر خادم'],
@@ -195,11 +243,17 @@ const COMM={
 
 /* ============ الترجمة / i18n ============ */
 const T={
- ar:{logo:'أناقة الحجاب',h1:'أناقة تليق بكِ، وستر يزيدكِ جمالاً',h1p:'حجابات وخمارات بأقمشة ناعمة وألوان هادئة، تصلكِ إلى باب بيتك في كل ولايات الوطن.',shop:'تسوّقي الآن',p1:'توصيل لـ 58 ولاية',p2:'الدفع عند الاستلام',p3:'استبدال سهل',coll:'مجموعتنا',collp:'اضغطي على المنتج لإتمام الطلب',foot:'© 2026 أناقة الحجاب — جميع الحقوق محفوظة',
+ ar:{logo:'أناقة الحجاب',eye:'مجموعة الموسم الجديد',h1:'أناقة تليق بكِ، وستر يزيدكِ جمالاً',h1p:'حجابات وخمارات بأقمشة ناعمة وألوان هادئة، تصلكِ إلى باب بيتك في كل ولايات الوطن.',shop:'تسوّقي الآن',p1:'توصيل لـ 58 ولاية',p2:'الدفع عند الاستلام',coll:'مجموعتنا',collp:'اضغطي على المنتج لإتمام الطلب',
+  bh:'لماذا أناقة الحجاب؟',bp:'نختار أقمشتنا بعناية لتمنحكِ راحة طوال اليوم ومظهراً راقياً في كل مناسبة.',b1:'أقمشة ناعمة وخفيفة',b2:'ألوان متنوعة تناسب كل الأذواق',b3:'طلب سهل ودفع عند الاستلام',
+  foot:'© 2026 أناقة الحجاب — جميع الحقوق محفوظة',credit:'الصور من Unsplash',
+  tileH:'الحجاب',tileHs:'خفيف وأنيق لكل يوم',tileK:'الخمار',tileKs:'سترٌ كامل وراحة تامة',
   da:'دج',buy:'اطلبي الآن',name:'الاسم',sur:'اللقب',phone:'رقم الهاتف',wil:'الولاية',wilp:'اختر الولاية',com:'البلدية',comp:'اكتب أو اختر البلدية',size:'القياس',color:'اللون',qty:'الكمية',total:'المجموع',send:'تأكيد الطلب',
   e_name:'أدخل الاسم واللقب',e_phone:'رقم الهاتف غير صحيح (مثال: 0555123456)',e_wil:'اختر الولاية',e_com:'أدخل البلدية',
   okt:'تم استلام طلبك بنجاح!',okp:'سنتصل بك قريباً على رقم هاتفك لتأكيد الطلب. شكراً لثقتك.',close:'إغلاق'},
- fr:{logo:'Hijab Élégance',h1:'Une élégance qui vous ressemble, une pudeur qui vous sublime',h1p:'Hijabs et khimars aux tissus doux et aux teintes apaisantes, livrés chez vous dans toutes les wilayas.',shop:'Découvrir la collection',p1:'Livraison dans 58 wilayas',p2:'Paiement à la livraison',p3:'Échange facile',coll:'Notre collection',collp:'Cliquez sur un produit pour commander',foot:'© 2026 Hijab Élégance — Tous droits réservés',
+ fr:{logo:'Hijab Élégance',eye:'Nouvelle collection',h1:'Une élégance qui vous ressemble, une pudeur qui vous sublime',h1p:'Hijabs et khimars aux tissus doux et aux teintes apaisantes, livrés chez vous dans toutes les wilayas.',shop:'Découvrir la collection',p1:'Livraison dans 58 wilayas',p2:'Paiement à la livraison',coll:'Notre collection',collp:'Cliquez sur un produit pour commander',
+  bh:'Pourquoi Hijab Élégance ?',bp:'Nous choisissons nos tissus avec soin pour vous offrir confort toute la journée et allure raffinée en toute occasion.',b1:'Tissus doux et légers',b2:'Un large choix de couleurs',b3:'Commande simple, paiement à la livraison',
+  foot:'© 2026 Hijab Élégance — Tous droits réservés',credit:'Photos : Unsplash',
+  tileH:'Hijab',tileHs:'Léger et élégant au quotidien',tileK:'Khimar',tileKs:'Couverture complète, confort total',
   da:'DA',buy:'Commander',name:'Prénom',sur:'Nom',phone:'Téléphone',wil:'Wilaya',wilp:'Choisir la wilaya',com:'Commune',comp:'Saisir ou choisir la commune',size:'Taille',color:'Couleur',qty:'Quantité',total:'Total',send:'Confirmer la commande',
   e_name:'Saisissez le prénom et le nom',e_phone:'Numéro invalide (ex : 0555123456)',e_wil:'Choisissez la wilaya',e_com:'Saisissez la commune',
   okt:'Commande bien reçue !',okp:'Nous vous appellerons bientôt pour confirmer votre commande. Merci de votre confiance.',close:'Fermer'}
@@ -216,7 +270,11 @@ function applyLang(){
  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===L));
  $('#chips').innerHTML=CATS.map(c=>`<button data-c="${c[0]}" class="${F==c[0]?'on':''}">${L==='ar'?c[1]:c[2]}</button>`).join('');
  document.querySelectorAll('#chips button').forEach(b=>b.onclick=()=>{F=b.dataset.c;applyLang()});
- $('#heroimgs').innerHTML=[PRODUCTS[1],PRODUCTS[0]].map(p=>imgTag(p,null,nm(p))).join('');
+ $('#heroimgs').innerHTML=rawImg(IMG.h1,'Hijab')+rawImg(IMG.h2,'Hijab');
+ $('#tiles').innerHTML=[[0,IMG.p3,'tileH','tileHs'],[1,IMG.p2,'tileK','tileKs']].map(x=>
+  `<button class="tile" data-k="${x[0]}">${rawImg(x[1],t(x[2]))}<span>${t(x[2])}<small>${t(x[3])}</small></span></button>`).join('');
+ document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{F=+b.dataset.k;applyLang();$('#shop').scrollIntoView({behavior:'smooth'})});
+ $('#bandimg').innerHTML=rawImg(IMG.p4,'Hijab Élégance');
  $('#wa').href='https://wa.me/'+WHATSAPP;
  renderGrid();
  if($('#ov').classList.contains('show')&&cur)openModal(cur.id,true);
