@@ -188,12 +188,12 @@ const API_URL='';                 /* رابط الـ API لاستقبال الط
 const WHATSAPP='213555000000';    /* رقم واتساب المتجر بصيغة دولية بدون + */
 const SIZES=['S','M','L','XL'];
 
-/* ============ صور حقيقية مخصصة للمحجبات (Hijab & Khimar Fashion) ============ */
+/* ============ صور محتشمة للمسلمات المحجبات (Modest Hijab Fashion) ============ */
 const u=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 const IMG={
   p1:u('1585487000160-6ebcfceb0d03'), p2:u('1583391733956-3750e0ff4e8b'), p3:u('1565084888279-aca607ecce0c'), p4:u('1584273143981-41c073dfe8f8'),
   p5:u('1609357605129-26f69add5d6e'), p6:u('1515886657613-9f3515b0c78f'), p7:u('1509631179647-0177331693ae'), p8:u('1529139574466-a303027c1d8b'),
-  h1:u('1534528741775-53994a69daeb',1000), h2:u('1490481651871-ab68de25d43d',1000)
+  h1:u('1609357605129-26f69add5d6e',1000), h2:u('1585487000160-6ebcfceb0d03',1000)
 };
 
 const C={
@@ -216,7 +216,7 @@ const CATS=[['all','الكل','Tout'],[0,'حجاب','Hijab'],[1,'خمار','Khim
 
 function ph(hex){
  const d=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${hex}'/><stop offset='1' stop-color='${hex}' stop-opacity='.55'/></linearGradient></defs><rect width='400' height='500' fill='#f3e6e9'/><path d='M200 70c-70 0-110 55-110 130 0 40 12 70 12 105 0 55-45 80-70 145h336c-25-65-70-90-70-145 0-35 12-65 12-105 0-75-40-130-110-130z' fill='url(#g)'/><ellipse cx='200' cy='215' rx='48' ry='62' fill='#f6dccb'/><path d='M200 70c-70 0-110 55-110 130 0 25 4 45 8 65 30-70 70-78 102-78s72 8 102 78c4-20 8-40 8-65 0-75-40-130-110-130z' fill='${hex}'/></svg>`;
- return 'data:image/svg+xml;utf8,'+encodeURIComponent(d);
+ return 'data:image/svg+xml;utf8,+encodeURIComponent(d);';
 }
 const src=(p,ck)=>(ck&&p.byColor[ck])||p.img;
 const fb=(p,ck)=>ph(C[ck||p.colors[0]].hex);
@@ -245,14 +245,14 @@ const COMM={
 const T={
  ar:{logo:'أناقة الحجاب',eye:'مجموعة الموسم الجديد',h1:'أناقة تليق بكِ، وستر يزيدكِ جمالاً',h1p:'حجابات وخمارات بأقمشة ناعمة وألوان هادئة، تصلكِ إلى باب بيتك في كل ولايات الوطن.',shop:'تسوّقي الآن',p1:'توصيل لـ 58 ولاية',p2:'الدفع عند الاستلام',coll:'مجموعتنا',collp:'اضغطي على المنتج لإتمام الطلب',
   bh:'لماذا أناقة الحجاب؟',bp:'نختار أقمشتنا بعناية لتمنحكِ راحة طوال اليوم ومظهراً راقياً في كل مناسبة.',b1:'أقمشة ناعمة وخفيفة',b2:'ألوان متنوعة تناسب كل الأذواق',b3:'طلب سهل ودفع عند الاستلام',
-  foot:'© 2026 أناقة الحجاب — جميع الحقوق محفوظة',credit:'الصور تعبيرية',
+  foot:'© 2026 أناقة الحجاب — جميع الحقوق محفوظة',credit:'صور محتشمة للمحجبات',
   tileH:'الحجاب',tileHs:'خفيف وأنيق لكل يوم',tileK:'الخمار',tileKs:'سترٌ كامل وراحة تامة',
   da:'دج',buy:'اطلبي الآن',name:'الاسم',sur:'اللقب',phone:'رقم الهاتف',wil:'الولاية',wilp:'اختر الولاية',com:'البلدية',comp:'اكتب أو اختر البلدية',size:'القياس',color:'اللون',qty:'الكمية',total:'المجموع',send:'تأكيد الطلب',
   e_name:'أدخل الاسم واللقب',e_phone:'رقم الهاتف غير صحيح (مثال: 0555123456)',e_wil:'اختر الولاية',e_com:'أدخل البلدية',
   okt:'تم استلام طلبك بنجاح!',okp:'سنتصل بك قريباً على رقم هاتفك لتأكيد الطلب. شكراً لثقتك.',close:'إغلاق'},
  fr:{logo:'Hijab Élégance',eye:'Nouvelle collection',h1:'Une élégance qui vous ressemble, une pudeur qui vous sublime',h1p:'Hijabs et khimars aux tissus doux et aux teintes apaisantes, livrés chez vous dans toutes les wilayas.',shop:'Découvrir la collection',p1:'Livraison dans 58 wilayas',p2:'Paiement à la livraison',coll:'Notre collection',collp:'Cliquez sur un produit pour commander',
   bh:'Pourquoi Hijab Élégance ?',bp:'Nous choisissons nos tissus avec soin pour vous offrir confort toute la journée et allure raffinée en toute occasion.',b1:'Tissus doux et légers',b2:'Un large choix de couleurs',b3:'Commande simple, paiement à la livraison',
-  foot:'© 2026 Hijab Élégance — Tous droits réservés',credit:'Photos d’illustration',
+  foot:'© 2026 Hijab Élégance — Tous droits réservés',credit:'Photos de femmes voilées et pudiques',
   tileH:'Hijab',tileHs:'Léger et élégant au quotidien',tileK:'Khimar',tileKs:'Couverture complète, confort total',
   da:'DA',buy:'Commander',name:'Prénom',sur:'Nom',phone:'Téléphone',wil:'Wilaya',wilp:'Choisir la wilaya',com:'Commune',comp:'Saisir ou choisir la commune',size:'Taille',color:'Couleur',qty:'Quantité',total:'Total',send:'Confirmer la commande',
   e_name:'Saisissez le prénom et le nom',e_phone:'Numéro invalide (ex : 0555123456)',e_wil:'Choisissez la wilaya',e_com:'Saisissez la commune',
@@ -358,7 +358,7 @@ async function submit(){
   else{const a=JSON.parse(localStorage.getItem(STORE_KEY)||'[]');a.unshift(order);localStorage.setItem(STORE_KEY,JSON.stringify(a))}
  }catch(e){return $('#er').textContent='Erreur / خطأ'}
  $('#modal').innerHTML=`<div class="ok"><b>✓</b><h3>${t('okt')}</h3><p style="margin:8px 0 22px;color:var(--mute)">${t('okp')}</p><button class="go" style="max-width:220px" id="cl2">${t('close')}</button></div>`;
- $('#cl2').onclick=closeModal;
+ $('#cl2'].onclick=closeModal;
 }
 applyLang();
 </script>
